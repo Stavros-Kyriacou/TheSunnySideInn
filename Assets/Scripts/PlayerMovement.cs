@@ -35,8 +35,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection;
     private Vector3 slopeMoveDirection;
     private Rigidbody rb;
+    private RaycastHit slopeHit;
 
-    RaycastHit slopeHit;
     private bool OnSlope()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight / 2 + 0.5f))
@@ -57,11 +57,12 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-
     }
 
     private void Update()
     {
+        if (!Player.Instance.MovementEnabled) return;
+        
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         MyInput();
@@ -69,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            Jump();
+            // Jump();
         }
 
         slopeMoveDirection = Vector3.ProjectOnPlane(moveDirection, slopeHit.normal);
@@ -115,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(moveDirection.normalized * moveSpeed * moveSpeedMultiplier, ForceMode.Acceleration);
             physicMaterial.dynamicFriction = 0;
         }
-        else if (isGrounded && OnSlope() && moveDirection== Vector3.zero)
+        else if (isGrounded && OnSlope() && moveDirection == Vector3.zero)
         {
             rb.AddForce(slopeMoveDirection.normalized * moveSpeed * moveSpeedMultiplier, ForceMode.Acceleration);
             physicMaterial.dynamicFriction = 2;

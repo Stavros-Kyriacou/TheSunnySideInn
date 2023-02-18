@@ -19,6 +19,8 @@ public class CameraController : MonoBehaviour
     }
     private void Update()
     {
+        if (!Player.Instance.MovementEnabled) return;
+        
         MyInput();
 
         playerCam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
