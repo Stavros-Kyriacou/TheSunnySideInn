@@ -14,6 +14,12 @@ public class Interaction : MonoBehaviour
     }
     private void Update()
     {
+        if (!Player.Instance.InteractionEnabled)
+        {
+            interactText.enabled = false;
+            return;
+        }
+
         RaycastHit hit;
         IInteractable interactable = null;
 
