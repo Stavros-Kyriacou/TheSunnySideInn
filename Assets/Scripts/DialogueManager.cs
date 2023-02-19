@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private Queue<string> sentences;
     private DialogueTrigger currentDialogueTrigger;
+    private bool dialogueActive = false;
     private bool typingSentence = false;
     private string currentSentence;
     private void Awake()
@@ -26,6 +27,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (dialogueTrigger == null) return;
 
+        dialogueActive = true;
         currentDialogueTrigger = dialogueTrigger;
 
         Player.Instance.MovementEnabled = false;
@@ -84,11 +86,13 @@ public class DialogueManager : MonoBehaviour
         {
             currentDialogueTrigger.currentDialogueIndex++;
         }
-
+        dialogueActive = false;
         dialogueBox.SetActive(false);
     }
     private void Update()
     {
+        if (!dialogueActive) return;
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (typingSentence)
