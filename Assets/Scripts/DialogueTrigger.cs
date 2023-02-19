@@ -2,10 +2,15 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    public Dialogue dialogue;
+    public string Name;
+    public Dialogue[] dialogues;
+    public int currentDialogueIndex = 0;
+    private void Start()
+    {
 
+    }
     public void TriggerDialogue()
     {
-        DialogueManager.Instance.StartDialogue(dialogue);
+        DialogueManager.Instance.StartDialogue(this);
     }
 }

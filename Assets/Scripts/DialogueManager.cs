@@ -10,6 +10,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private Queue<string> sentences;
+    private DialogueTrigger currentDialogueTrigger;
     private bool typingSentence = false;
     private string currentSentence;
     private void Awake()
@@ -21,17 +22,23 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
         dialogueBox.SetActive(false);
     }
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(DialogueTrigger dialogueTrigger)
     {
+        if (dialogueTrigger == null) return;
+
+        currentDialogueTrigger = dialogueTrigger;
+
         Player.Instance.MovementEnabled = false;
         Player.Instance.InteractionEnabled = false;
         dialogueBox.SetActive(true);
 
-        nameText.text = dialogue.name;
+        nameText.text = dialogueTrigger.name;
+
+        var currentDialogue = dialogueTrigger.dialogues[dialogueTrigger.currentDialogueIndex];
 
         sentences.Clear();
 
-        foreach (var sentence in dialogue.sentences)
+        foreach (var sentence in currentDialogue.sentences)
         {
             sentences.Enqueue(sentence);
         }
@@ -63,16 +70,21 @@ public class DialogueManager : MonoBehaviour
         typingSentence = false;
     }
     private void SkipSentence()
-    {   
+    {
         StopAllCoroutines();
         typingSentence = false;
         dialogueText.text = currentSentence;
-
     }
     private void EndDialogue()
     {
         Player.Instance.MovementEnabled = true;
         Player.Instance.InteractionEnabled = true;
+
+        if (currentDialogueTrigger.currentDialogueIndex < (1 - currentDialogueTrigger.currentDialogueIndex))
+        {
+            currentDialogueTrigger.currentDialogueIndex++;
+        }
+
         dialogueBox.SetActive(false);
     }
     private void Update()
@@ -100,8 +112,6 @@ public class DialogueManager : MonoBehaviour
 [System.Serializable]
 public class Dialogue
 {
-    public string name;
-
     [TextArea(3, 10)]
     public string[] sentences;
 }

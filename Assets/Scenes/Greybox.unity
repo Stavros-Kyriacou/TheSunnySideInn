@@ -30140,19 +30140,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe506f2b86adbb2488507c36458d53c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    name: Honky Tonks
-    sentences:
-    - 'Welcome to The Sunny Side Inn. '
+  Name: Honky Tonks
+  dialogues:
+  - sentences:
+    - Welcome to The Sunny Side Inn.
     - You must be here for the room 203 reservation. We aren't expecting any other
       new guests tonight...
-    - 'Here is your key.Your room is on the second floor, to the left of the elevator.
-
-'
     - As a friendly reminder, our guests often find that it's best not to wander
       too far from your room at night. The hotel can be... disorienting, especially
       for those who are unfamiliar with it.
-    - ' I hope you enjoy your stay at the Sunny Side Inn.'
+    - I hope you enjoy your stay at the Sunny Side Inn.
+  - sentences:
+    - I hope you enjoy your stay at the Sunny Side Inn.
+  currentDialogueIndex: 0
 --- !u!136 &957072865
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -46232,7 +46232,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-588816
+  m_Name: pb_Mesh33226
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -50272,7 +50272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669287776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.9899998, y: 0.862, z: 34.23}
+  m_LocalPosition: {x: 1.9899998, y: 0.862, z: 33.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
