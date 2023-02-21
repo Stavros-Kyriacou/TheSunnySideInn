@@ -1,7 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CombinationLock : MonoBehaviour, IInteractable
 {
@@ -13,7 +12,7 @@ public class CombinationLock : MonoBehaviour, IInteractable
     [SerializeField] private Transform lockedLocation;
     [SerializeField] private Transform unlockedLocation;
     [SerializeField] private float unlockAnimationDuration;
-
+    public UnityEvent OnUnlocked;
     private Transform selectedRing;
     private int currentIndex;
     private int[] currentCombination;
@@ -100,7 +99,7 @@ public class CombinationLock : MonoBehaviour, IInteractable
                     {
                         currentCombination[currentIndex] = 0;
                     }
-                    selectedRing.transform.rotation = Quaternion.identity;
+                    selectedRing.transform.localRotation = Quaternion.identity;
                     selectedRing.transform.Rotate(0, 360 - (currentCombination[currentIndex] * 36), 0);
                 }
                 break;
@@ -111,7 +110,7 @@ public class CombinationLock : MonoBehaviour, IInteractable
                     {
                         currentCombination[currentIndex] = 9;
                     }
-                    selectedRing.transform.rotation = Quaternion.identity;
+                    selectedRing.transform.localRotation = Quaternion.identity;
                     selectedRing.transform.Rotate(0, 360 - (currentCombination[currentIndex] * 36), 0);
                 }
                 break;
@@ -142,6 +141,7 @@ public class CombinationLock : MonoBehaviour, IInteractable
             yield return null;
         }
         lockTransform.transform.position = unlockedLocation.transform.position;
+        OnUnlocked.Invoke();
     }
 
     public void Interact()
