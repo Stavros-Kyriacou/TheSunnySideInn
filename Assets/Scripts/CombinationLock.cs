@@ -4,23 +4,44 @@ using UnityEngine.Events;
 
 public class CombinationLock : MonoBehaviour, IInteractable
 {
+    public bool IsLocked
+    {
+        get
+        {
+            return isLocked;
+        }
+        private set
+        {
+            isLocked = value;
+        }
+    }
+
+    public bool IsInteractable { get; set; }
+
     [SerializeField] private int[] combination;
     [SerializeField] private Transform[] rings;
     [SerializeField] private Material ringMaterial;
     [SerializeField] private Material ringSelectedMaterial;
-    [SerializeField] private Transform lockTransform;
+    [SerializeField] private Transform lockBodyTransform;
     [SerializeField] private Transform lockedLocation;
     [SerializeField] private Transform unlockedLocation;
     [SerializeField] private float unlockAnimationDuration;
+    [SerializeField] private MoveCamera cameraHolder;
+    [SerializeField] private Transform cameraPosition;
+    private Animator animator;
     public UnityEvent OnUnlocked;
     private Transform selectedRing;
     private int currentIndex;
     private int[] currentCombination;
     private Lock_Controller lockController;
+    private bool isLocked = true;
     private void Awake()
     {
-        lockController = new Lock_Controller();
+        IsLocked = true;
+        IsInteractable = true;
+        animator = GetComponent<Animator>();
 
+        lockController = new Lock_Controller();
         lockController.Player_Map.Up.performed += x => SelectRing(RingSelection.UP);
         lockController.Player_Map.Down.performed += x => SelectRing(RingSelection.DOWN);
         lockController.Player_Map.Left.performed += x => RotateRing(RingRotation.LEFT);
@@ -125,38 +146,67 @@ public class CombinationLock : MonoBehaviour, IInteractable
         currentCombination[1] == combination[1] &&
         currentCombination[2] == combination[2])
         {
+            IsInteractable = false;
             StartCoroutine(OpenLock());
         }
     }
 
     IEnumerator OpenLock()
     {
-        Vector3 startPos = lockTransform.transform.position;
+        Vector3 startPos = lockBodyTransform.transform.position;
         float elapsedTime = 0f;
-
+        yield return new WaitForSeconds(0.4f);
         while (elapsedTime < unlockAnimationDuration)
         {
-            lockTransform.transform.position = Vector3.Lerp(startPos, unlockedLocation.transform.position, elapsedTime / unlockAnimationDuration);
+            lockBodyTransform.transform.position = Vector3.Lerp(startPos, unlockedLocation.transform.position, elapsedTime / unlockAnimationDuration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        lockTransform.transform.position = unlockedLocation.transform.position;
+        lockBodyTransform.transform.position = unlockedLocation.transform.position;
+
+        if (animator != null)
+        {
+            animator.SetTrigger("OnUnlocked");
+        }
+        else
+        {
+            Debug.Log("Animator not assigned");
+        }
+    }
+    public void Unlock()
+    {
+        Debug.Log("unlock event called");
+        this.IsLocked = false;
         OnUnlocked.Invoke();
+        StopInteraction();
     }
 
     public void Interact()
     {
-        ChangeRing(currentIndex);
+        //Disable player and camera movement
         Player.Instance.MovementEnabled = false;
         Player.Instance.InteractionEnabled = false;
+
+        //Move camera to look position and rotate towards the lock
+        cameraHolder.CameraState = CameraState.UNLOCK_DOOR;
+        var cameraLookDirection = gameObject.transform.position - cameraPosition.position;
+        cameraHolder.transform.localRotation = Quaternion.LookRotation(cameraLookDirection);
+
+        //Enable combo lock controls
         lockController.Enable();
+
+        //Select ring
+        ChangeRing(currentIndex);
     }
     public void StopInteraction()
     {
         ChangeRing(-1);
+        lockController.Disable();
+
+        cameraHolder.CameraState = CameraState.PLAYER;
+
         Player.Instance.MovementEnabled = true;
         Player.Instance.InteractionEnabled = true;
-        lockController.Disable();
     }
 }
 public enum RingSelection
