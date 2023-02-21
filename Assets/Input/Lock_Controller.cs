@@ -121,7 +121,7 @@ public partial class @Lock_Controller : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c6ba2b43-cc37-4933-bde9-c769a3277cb2"",
-                    ""path"": ""<Keyboard>/escape"",
+                    ""path"": ""<Keyboard>/tab"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
