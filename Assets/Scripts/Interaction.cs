@@ -29,7 +29,7 @@ public class Interaction : MonoBehaviour
 
             interactable = hit.transform.GetComponent<IInteractable>();
 
-            if (interactable != null)
+            if (interactable != null && interactable.IsInteractable)
             {
                 interactText.enabled = true;
             }

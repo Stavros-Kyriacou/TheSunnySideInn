@@ -6,6 +6,13 @@ public class ElevatorButton : MonoBehaviour, IInteractable
 {
     [SerializeField] private ElevatorButtonType buttonType;
     [SerializeField] private Elevator elevator;
+
+    public bool IsInteractable { get; set; }
+    private void Awake()
+    {
+        IsInteractable = true;
+    }
+
     public void Interact()
     {
         switch (buttonType)
