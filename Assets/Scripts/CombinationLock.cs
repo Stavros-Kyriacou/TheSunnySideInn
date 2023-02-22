@@ -29,6 +29,7 @@ public class CombinationLock : MonoBehaviour, IInteractable
     [SerializeField] private MoveCamera cameraHolder;
     [SerializeField] private Transform cameraPosition;
     private Animator animator;
+    private BoxCollider boxCollider;
     public UnityEvent OnUnlocked;
     private Transform selectedRing;
     private int currentIndex;
@@ -40,6 +41,7 @@ public class CombinationLock : MonoBehaviour, IInteractable
         IsLocked = true;
         IsInteractable = true;
         animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider>();
 
         lockController = new Lock_Controller();
         lockController.Player_Map.Up.performed += x => SelectRing(RingSelection.UP);
@@ -164,21 +166,15 @@ public class CombinationLock : MonoBehaviour, IInteractable
         }
         lockBodyTransform.transform.position = unlockedLocation.transform.position;
 
-        if (animator != null)
-        {
-            animator.SetTrigger("OnUnlocked");
-        }
-        else
-        {
-            Debug.Log("Animator not assigned");
-        }
+        if (animator != null) animator.SetTrigger("OnUnlocked");
     }
     public void Unlock()
     {
-        Debug.Log("unlock event called");
         this.IsLocked = false;
+        if (boxCollider != null) boxCollider.enabled = false;
         OnUnlocked.Invoke();
         StopInteraction();
+        this.gameObject.SetActive(false);
     }
 
     public void Interact()
