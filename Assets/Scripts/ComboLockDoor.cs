@@ -33,7 +33,7 @@ public class ComboLockDoor : MonoBehaviour, IInteractable
     IEnumerator UnlockDoor()
     {
         IsInteractable = false;
-        var startRotation = transform.rotation;
+        var startRotation = transform.localRotation;
         var endRotation = Quaternion.Euler(new Vector3(0, unlockedRotationAmount, 0));
         float elapsedTime = 0f;
 
