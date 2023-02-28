@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -71,7 +70,7 @@ public class Door : MonoBehaviour, IInteractable
 
     private bool PlayerHasKey()
     {
-        return Inventory.Instance.InventoryContainsKey(keyId);
+        return InventoryManager.Instance.InventoryContainsKey(keyId);
     }
 
     public void OpenDoor(bool fromOtherDoor)
