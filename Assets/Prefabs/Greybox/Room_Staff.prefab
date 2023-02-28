@@ -6240,7 +6240,7 @@ PrefabInstance:
     - target: {fileID: 3734929498670722662, guid: 44ebb36c9609edb4aa610b88d94da30a,
         type: 3}
       propertyPath: doorLockedMessage
-      value: Requires Staff Room Key
+      value: Requires Room 207 Key
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

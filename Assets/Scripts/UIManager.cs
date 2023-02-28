@@ -5,6 +5,9 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
+    public UI_Controller UI_Controller;
+    [Header("Inventory")]
+    [SerializeField] private GameObject inventoryPanel;
 
     [Header("Notify Text")]
     [SerializeField] private TextMeshProUGUI notifyText;
@@ -16,6 +19,12 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        inventoryPanel.SetActive(false);
+
+        UI_Controller = new UI_Controller();
+        UI_Controller.Map.Inventory.performed += x => ToggleInventory();
+
+        UI_Controller.Enable();
     }
     public void DisplayNotifyText(string message)
     {
@@ -47,6 +56,10 @@ public class UIManager : MonoBehaviour
         notifyText.text = "";
 
         fadingText = null;
+    }
+    private void ToggleInventory()
+    {
+        inventoryPanel.SetActive(!inventoryPanel.activeInHierarchy);
     }
 
 }

@@ -1,0 +1,34 @@
+{
+    "name": "UI_Controller",
+    "maps": [
+        {
+            "name": "Map",
+            "id": "7212df99-beb5-4053-9e88-dba8990f57b0",
+            "actions": [
+                {
+                    "name": "Inventory",
+                    "type": "Button",
+                    "id": "dc9713b5-8fa2-4dd8-8d7d-91e88293aae4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "58fd3ece-0e68-446b-9601-429afb5bec06",
+                    "path": "<Keyboard>/i",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
