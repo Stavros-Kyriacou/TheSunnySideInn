@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using TMPro;
 
 public class DialogueManager : MonoBehaviour
@@ -88,9 +89,11 @@ public class DialogueManager : MonoBehaviour
         }
         dialogueActive = false;
         dialogueBox.SetActive(false);
+        currentDialogueTrigger.OnDialogueComplete.Invoke();
     }
     private void Update()
     {
+        //TODO: Create input action and dont use update method
         if (!dialogueActive) return;
 
         if (Input.GetKeyDown(KeyCode.Space))
