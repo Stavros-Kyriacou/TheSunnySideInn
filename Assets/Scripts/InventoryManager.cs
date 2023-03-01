@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,6 +33,15 @@ public class InventoryManager : MonoBehaviour
     {
         Items.Add(item.itemData);
 
+        DrawInventory();
+    }
+    public void RemoveItem(Item item)
+    {
+        var itemToRemove = Items.SingleOrDefault(r => r.Name == item.itemData.Name);
+
+        if (itemToRemove == null) return;
+
+        Items.Remove(itemToRemove);
         DrawInventory();
     }
     public void DrawInventory()

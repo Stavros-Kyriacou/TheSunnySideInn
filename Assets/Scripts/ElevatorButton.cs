@@ -9,9 +9,12 @@ public class ElevatorButton : MonoBehaviour, IInteractable
     public UnityEvent OnInteract;
 
     public bool IsInteractable { get; set; }
+    public string InteractMessage { get; set; }
+    [SerializeField] private string interactMessage;
     private void Awake()
     {
         IsInteractable = true;
+        InteractMessage = interactMessage;
     }
 
     public void Interact()

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7767348012279067639}
   - component: {fileID: 7767348012279067635}
   m_Layer: 0
-  m_Name: Room 201 Key
+  m_Name: Room 213 Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7767348012279067637
 MeshFilter:
@@ -111,3 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 328c252114431b249af7461b2409e5ec, type: 2}
+  OnPickup:
+    m_PersistentCalls:
+      m_Calls: []
+  interactMessage: Room 213 Key
+  isInteractable: 0
