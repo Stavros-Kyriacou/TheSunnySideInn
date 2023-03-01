@@ -95,6 +95,13 @@ public class Door : MonoBehaviour, IInteractable
         }
         StartCoroutine(RotateDoor());
     }
+    public void CloseDoor()
+    {
+        if (doorOpen)
+        {
+            StartCoroutine(RotateDoor());
+        }
+    }
     private IEnumerator RotateDoor()
     {
         doorMoving = true;

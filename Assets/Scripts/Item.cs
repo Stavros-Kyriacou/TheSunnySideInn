@@ -6,13 +6,13 @@ public class Item : MonoBehaviour, IInteractable
     public ItemData itemData;
     public UnityEvent OnPickup;
     [SerializeField] private string interactMessage;
-
-    public bool IsInteractable { get; set; }
+    [SerializeField] private bool isInteractable;
+    public bool IsInteractable { get { return isInteractable; } set { isInteractable = value; } }
     public string InteractMessage { get; set; }
 
     private void Awake()
     {
-        IsInteractable = true;
+        IsInteractable = isInteractable;
         InteractMessage = interactMessage;
     }
     public void Interact()

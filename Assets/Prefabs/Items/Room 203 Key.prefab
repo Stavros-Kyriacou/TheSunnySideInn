@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7767348012279067639}
   - component: {fileID: 7767348012279067635}
   m_Layer: 0
-  m_Name: Room 213 Key
+  m_Name: Room 203 Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,4 +114,5 @@ MonoBehaviour:
   OnPickup:
     m_PersistentCalls:
       m_Calls: []
-  interactMessage: Room 213 Key
+  interactMessage: Room 203 Key
+  isInteractable: 0
