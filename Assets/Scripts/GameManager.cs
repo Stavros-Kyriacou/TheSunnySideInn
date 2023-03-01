@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public bool Luggage_Picked_Up { get; set; }
     public bool Speak_To_Receptionist { get; set; }
     public bool Room_Key_Acquired { get; set; }
+    public bool Luggage_Placed { get; set; }
 
     private void Awake()
     {
