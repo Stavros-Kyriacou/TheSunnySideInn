@@ -31,6 +31,7 @@ public class Interaction : MonoBehaviour
 
             if (interactable != null && interactable.IsInteractable)
             {
+                interactText.text = interactable.InteractMessage;
                 interactText.enabled = true;
             }
             else

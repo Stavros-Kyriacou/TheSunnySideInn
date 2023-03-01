@@ -9,9 +9,12 @@ public class ComboLockDoor : MonoBehaviour, IInteractable
     [SerializeField] private float unlockedRotationAmount;
     [SerializeField] private float doorMovementDuration;
     public bool IsInteractable { get; set; }
+    public string InteractMessage { get; set; }
+    [SerializeField] private string interactMessage;
     private void Awake()
     {
         IsInteractable = true;
+        InteractMessage = interactMessage;
     }
 
     public void Interact()

@@ -909,6 +909,7 @@ MonoBehaviour:
       m_Calls: []
   isDoubleDoor: 0
   otherDoor: {fileID: 0}
+  interactMessage: Press 'E'
 --- !u!65 &3734929498670722663
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -17,6 +17,8 @@ public class CombinationLock : MonoBehaviour, IInteractable
     }
 
     public bool IsInteractable { get; set; }
+    public string InteractMessage { get; set; }
+    [SerializeField] private string interactMessage;
 
     [SerializeField] private int[] combination;
     [SerializeField] private Transform[] rings;
@@ -40,6 +42,7 @@ public class CombinationLock : MonoBehaviour, IInteractable
     {
         IsLocked = true;
         IsInteractable = true;
+        InteractMessage = interactMessage;
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider>();
 

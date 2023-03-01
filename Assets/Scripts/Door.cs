@@ -19,12 +19,15 @@ public class Door : MonoBehaviour, IInteractable
     [SerializeField] private Door otherDoor;
 
     public bool IsInteractable { get; set; }
+    public string InteractMessage { get; set; }
+    [SerializeField] private string interactMessage;
     private bool doorMoving;
     private bool doorLocked;
     private bool doorOpen;
     private void Awake()
     {
         this.IsInteractable = true;
+        InteractMessage = interactMessage;
         doorMoving = false;
         doorOpen = false;
         if (startsLocked || requiresKey)
@@ -40,9 +43,23 @@ public class Door : MonoBehaviour, IInteractable
     {
         if (doorMoving) return;
 
+        if (requiresKey && doorLocked)
+        {
+            if (PlayerHasKey())
+            {
+                UnlockDoor();
+                return;
+            }
+            else
+            {
+                UIManager.Instance.DisplayNotifyText(doorLockedMessage);
+                return;
+            }
+        }
+
         if (doorLocked)
         {
-            UnlockDoor();
+            UIManager.Instance.DisplayNotifyText(doorLockedMessage);
             return;
         }
 
@@ -50,21 +67,11 @@ public class Door : MonoBehaviour, IInteractable
     }
     public void UnlockDoor()
     {
+        doorLocked = false;
+
         if (requiresKey)
         {
-            if (PlayerHasKey())
-            {
-                doorLocked = false;
-                UIManager.Instance.DisplayNotifyText("Unlocked");
-            }
-            else
-            {
-                UIManager.Instance.DisplayNotifyText(doorLockedMessage);
-            }
-        }
-        else
-        {
-            doorLocked = false;
+            UIManager.Instance.DisplayNotifyText("Unlocked");
         }
     }
 
@@ -80,7 +87,7 @@ public class Door : MonoBehaviour, IInteractable
             StartCoroutine(RotateDoor());
             return;
         }
-        
+
         if (isDoubleDoor && otherDoor != null)
         {
 

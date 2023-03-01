@@ -111,3 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: a80eab961723fee41af590397a92d34d, type: 2}
+  OnPickup:
+    m_PersistentCalls:
+      m_Calls: []
+  interactMessage: Room 207 Key

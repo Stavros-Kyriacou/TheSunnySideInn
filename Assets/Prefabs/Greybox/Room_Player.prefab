@@ -3627,6 +3627,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3734929498670722662, guid: 44ebb36c9609edb4aa610b88d94da30a,
         type: 3}
+      propertyPath: interactMessage
+      value: Press 'E'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734929498670722662, guid: 44ebb36c9609edb4aa610b88d94da30a,
+        type: 3}
       propertyPath: doorLockedMessage
       value: 
       objectReference: {fileID: 0}
@@ -3816,6 +3821,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3734929498670722662, guid: 44ebb36c9609edb4aa610b88d94da30a,
         type: 3}
+      propertyPath: interactMessage
+      value: Press 'E'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734929498670722662, guid: 44ebb36c9609edb4aa610b88d94da30a,
+        type: 3}
       propertyPath: doorLockedMessage
       value: 
       objectReference: {fileID: 0}
@@ -3915,6 +3925,11 @@ PrefabInstance:
         type: 3}
       propertyPath: startsLocked
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734929498670722662, guid: 44ebb36c9609edb4aa610b88d94da30a,
+        type: 3}
+      propertyPath: interactMessage
+      value: Press 'E'
       objectReference: {fileID: 0}
     - target: {fileID: 3734929498670722662, guid: 44ebb36c9609edb4aa610b88d94da30a,
         type: 3}
