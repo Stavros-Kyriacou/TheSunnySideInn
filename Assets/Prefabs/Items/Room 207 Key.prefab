@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8343901547536571054
 MeshFilter:
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8343901547536571050}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -5546940888850326318, guid: 4b2c7c9203311bf4ca3a0a8704599884, type: 3}
 --- !u!23 &8343901547536571055
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 95c03ec3238704147bd2ce5dddc1b191, type: 2}
+  - {fileID: 2100000, guid: 8b717b2819423734a900ec6d61e11583, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.1412201, y: 0.31108952, z: 0.05478464}
+  m_Center: {x: 0.0015716553, y: -0.13526487, z: 0}
 --- !u!114 &8343901547536571049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,3 +115,4 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactMessage: Room 207 Key
+  isInteractable: 0
