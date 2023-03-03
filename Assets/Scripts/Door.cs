@@ -18,14 +18,20 @@ public class Door : MonoBehaviour, IInteractable
     [SerializeField] private bool isDoubleDoor;
     [SerializeField] private Door otherDoor;
 
-    public bool IsInteractable { get; set; }
-    public string InteractMessage { get; set; }
+    [Header("Interaction")]
     [SerializeField] private string interactMessage;
+    public string InteractMessage { get; set; }
+    public bool IsInteractable { get; set; }
+    [Header("Audio")]
+    [SerializeField] private AudioClip handleShakeClip;
+    [SerializeField] private Transform handlePos;
+    private Animator animator;
     private bool doorMoving;
     private bool doorLocked;
     private bool doorOpen;
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         this.IsInteractable = true;
         InteractMessage = interactMessage;
         doorMoving = false;
@@ -131,5 +137,10 @@ public class Door : MonoBehaviour, IInteractable
 
         doorMoving = false;
         doorOpen = !doorOpen;
+    }
+    public void PlayHandleShakeAnimation()
+    {
+        animator.SetTrigger("ShakeDoorHandle");
+        AudioSource.PlayClipAtPoint(handleShakeClip, handlePos.position, 10f);
     }
 }
