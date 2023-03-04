@@ -41,7 +41,7 @@ public class NPCMovement : MonoBehaviour
 
         yield return new WaitForSeconds(securityMovementDuration + 2f);
 
-        securityDoor.PlayHandleShakeAnimation();
+        securityDoor.PlayHandleAnimation();
 
         yield return new WaitForSeconds(2f);
 
