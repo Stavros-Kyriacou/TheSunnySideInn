@@ -3,33 +3,39 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Door : MonoBehaviour, IInteractable
+[RequireComponent(typeof(Animator))]
+public class Door : MonoBehaviour
 {
-    [SerializeField] private Transform door;
-    [SerializeField][Range(-90f, 90f)] private float doorRotationAmount;
-    [SerializeField] private float doorMovementDuration;
+    [Header("Door")]
     [SerializeField] private bool startsLocked;
     [SerializeField] private bool requiresKey;
     [SerializeField] private string keyId;
     [SerializeField] private string doorLockedMessage;
+
+    [Header("Audio")]
+    [SerializeField] private Transform audioLocation;
+
+    [Header("Events")]
     public UnityEvent OnUnlocked;
+    public UnityEvent OnOpened;
+    public UnityEvent OnClosed;
 
-    [Header("Double Door")]
-    [SerializeField] private bool isDoubleDoor;
-    [SerializeField] private Door otherDoor;
+    [Header("Animation")]
+    [HideInInspector] public bool isMoving;
 
-    public bool IsInteractable { get; set; }
-    public string InteractMessage { get; set; }
-    [SerializeField] private string interactMessage;
-    private bool doorMoving;
+
+    private Animator animator;
     private bool doorLocked;
-    private bool doorOpen;
+    private bool doorOpen = false;
+
     private void Awake()
     {
-        this.IsInteractable = true;
-        InteractMessage = interactMessage;
-        doorMoving = false;
-        doorOpen = false;
+        animator = GetComponent<Animator>();
+        if (animator == null)
+        {
+            Debug.LogError("No animator found");
+        }
+
         if (startsLocked || requiresKey)
         {
             doorLocked = true;
@@ -39,10 +45,8 @@ public class Door : MonoBehaviour, IInteractable
             doorLocked = startsLocked;
         }
     }
-    public void Interact()
+    public void OpenDoor()
     {
-        if (doorMoving) return;
-
         if (requiresKey && doorLocked)
         {
             if (PlayerHasKey())
@@ -63,73 +67,48 @@ public class Door : MonoBehaviour, IInteractable
             return;
         }
 
-        OpenDoor(false);
+        if (isMoving) return;
+
+        if (doorOpen)
+        {
+            animator.SetTrigger("OnClose");
+        }
+        else
+        {
+            animator.SetTrigger("OnOpen");
+        }
+        doorOpen = !doorOpen;
+    }
+    public void CloseDoor()
+    {
+        if (!doorOpen) return;
+
+        animator.SetTrigger("OnClose");
+        doorOpen = false;
+    }
+    private bool PlayerHasKey()
+    {
+        return InventoryManager.Instance.InventoryContainsKey(keyId);
     }
     public void UnlockDoor()
     {
         doorLocked = false;
-
+        
         if (requiresKey)
         {
             UIManager.Instance.DisplayNotifyText("Unlocked");
         }
     }
-
-    private bool PlayerHasKey()
+    public void LockDoor()
     {
-        return InventoryManager.Instance.InventoryContainsKey(keyId);
+        doorLocked = true;
     }
-
-    public void OpenDoor(bool fromOtherDoor)
+    public void PlayAudioClip(AudioClip clip)
     {
-        if (fromOtherDoor)
-        {
-            StartCoroutine(RotateDoor());
-            return;
-        }
-
-        if (isDoubleDoor && otherDoor != null)
-        {
-
-            otherDoor.OpenDoor(true);
-        }
-        StartCoroutine(RotateDoor());
+        AudioSource.PlayClipAtPoint(clip, audioLocation.position);
     }
-    public void CloseDoor()
+    public void PlayHandleAnimation()
     {
-        if (doorOpen)
-        {
-            StartCoroutine(RotateDoor());
-        }
-    }
-    private IEnumerator RotateDoor()
-    {
-        doorMoving = true;
-
-        var startRotation = transform.localRotation;
-        Quaternion endRotation;
-
-        if (doorOpen)
-        {
-            endRotation = Quaternion.Euler(new Vector3(0, 0, 0));
-        }
-        else
-        {
-            endRotation = Quaternion.Euler(new Vector3(0, doorRotationAmount, 0));
-        }
-
-        float elapsedTime = 0f;
-
-        while (elapsedTime < doorMovementDuration)
-        {
-            transform.localRotation = Quaternion.Slerp(startRotation, endRotation, elapsedTime / doorMovementDuration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.localRotation = endRotation;
-
-        doorMoving = false;
-        doorOpen = !doorOpen;
+        animator.SetTrigger("HandleAnimation");
     }
 }
