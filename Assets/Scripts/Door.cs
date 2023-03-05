@@ -94,10 +94,11 @@ public class Door : MonoBehaviour
     {
         doorLocked = false;
 
-        if (requiresKey)
-        {
-            UIManager.Instance.DisplayNotifyText("Unlocked");
-        }
+        UIManager.Instance.DisplayNotifyText("Unlocked");
+    }
+    public void LockDoor()
+    {
+        doorLocked = true;
     }
     public void PlayAudioClip(AudioClip clip)
     {

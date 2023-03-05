@@ -48,6 +48,7 @@ public class NPCMovement : MonoBehaviour
         StartCoroutine(Move(securityRoomPos.position, securityEndPos.position, securityMovementDuration));
 
         yield return new WaitForSeconds(securityMovementDuration);
+        securityDoor.UnlockDoor();
         gameObject.SetActive(false);
 
     }

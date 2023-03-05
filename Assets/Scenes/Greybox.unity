@@ -18887,18 +18887,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 866862354}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &870816967 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4842956820411982499, guid: 010cce631dc780642843371d60eacce4,
-    type: 3}
-  m_PrefabInstance: {fileID: 5039547412233744424}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11a643e14626ecf4ab73c0a84fec4cd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &872841666
 Mesh:
   m_ObjectHideFlags: 0
@@ -44702,7 +44690,7 @@ PrefabInstance:
     - target: {fileID: 8343901547536571049, guid: caa6b8403fc38fc4a988d25dac9d8f5d,
         type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8343901547536571049, guid: caa6b8403fc38fc4a988d25dac9d8f5d,
         type: 3}
@@ -44723,7 +44711,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 870816967}
+      objectReference: {fileID: 2063249569}
     - target: {fileID: 8343901547536571049, guid: caa6b8403fc38fc4a988d25dac9d8f5d,
         type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[3].m_Target
@@ -44762,7 +44750,7 @@ PrefabInstance:
     - target: {fileID: 8343901547536571049, guid: caa6b8403fc38fc4a988d25dac9d8f5d,
         type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: set_IsInteractable
+      value: LockDoor
       objectReference: {fileID: 0}
     - target: {fileID: 8343901547536571049, guid: caa6b8403fc38fc4a988d25dac9d8f5d,
         type: 3}
@@ -44782,7 +44770,7 @@ PrefabInstance:
     - target: {fileID: 8343901547536571049, guid: caa6b8403fc38fc4a988d25dac9d8f5d,
         type: 3}
       propertyPath: OnPickup.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: DoorTrigger, Assembly-CSharp
+      value: Door, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8343901547536571049, guid: caa6b8403fc38fc4a988d25dac9d8f5d,
         type: 3}
