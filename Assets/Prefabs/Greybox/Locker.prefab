@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5720982883347430028}
   - component: {fileID: 5720982883347430030}
-  - component: {fileID: 5720982883347430031}
-  - component: {fileID: 8719346383570942210}
+  - component: {fileID: 1585639961902171412}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -51,7 +50,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.97318935, y: 2.2232416, z: 0.031352222}
   m_Center: {x: 0.4892974, y: 1.1176742, z: 0}
---- !u!114 &5720982883347430031
+--- !u!114 &1585639961902171412
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60,44 +59,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5720982883347430029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dc261d715fd4004caed5c666ec76501, type: 3}
+  m_Script: {fileID: 11500000, guid: 11a643e14626ecf4ab73c0a84fec4cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startsLocked: 0
-  requiresKey: 0
-  keyId: 
-  doorLockedMessage: 
-  audioLocation: {fileID: 0}
-  OnUnlocked:
-    m_PersistentCalls:
-      m_Calls: []
-  OnOpened:
-    m_PersistentCalls:
-      m_Calls: []
-  OnClosed:
-    m_PersistentCalls:
-      m_Calls: []
-  isMoving: 0
---- !u!95 &8719346383570942210
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5720982883347430029}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  door: {fileID: 9156045514332652131}
+  interactMessage: Interact
+  isInteractable: 1
 --- !u!1 &5720982883533007100
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a643e14626ecf4ab73c0a84fec4cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 5720982883347430031}
+  door: {fileID: 0}
   interactMessage: 
   isInteractable: 1
 --- !u!1 &5720982884263953662
@@ -1035,6 +1002,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5720982885103325080}
+  - component: {fileID: 4943203407154394962}
+  - component: {fileID: 9156045514332652131}
   m_Layer: 0
   m_Name: Locker
   m_TagString: Untagged
@@ -1056,6 +1025,85 @@ Transform:
   m_Children:
   - {fileID: 5720982885101766605}
   - {fileID: 5720982883347430028}
+  - {fileID: 5017346474923485905}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &4943203407154394962
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5720982885103325081}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3dc8f9bd3daebf74ca84a432ecb1ecc3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9156045514332652131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5720982885103325081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc261d715fd4004caed5c666ec76501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startsLocked: 0
+  requiresKey: 0
+  keyId: 
+  doorLockedMessage: 
+  audioLocation: {fileID: 5017346474923485905}
+  OnUnlocked:
+    m_PersistentCalls:
+      m_Calls: []
+  OnOpened:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClosed:
+    m_PersistentCalls:
+      m_Calls: []
+  isMoving: 0
+--- !u!1 &5900345861351469011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5017346474923485905}
+  m_Layer: 0
+  m_Name: Audio Location
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5017346474923485905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5900345861351469011}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5720982885103325080}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
