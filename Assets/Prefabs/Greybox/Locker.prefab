@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5720982883347430028}
   - component: {fileID: 5720982883347430030}
   - component: {fileID: 5720982883347430031}
+  - component: {fileID: 8719346383570942210}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -62,19 +63,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dc261d715fd4004caed5c666ec76501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 0}
-  doorRotationAmount: 90
-  doorMovementDuration: 0.8
   startsLocked: 0
   requiresKey: 0
   keyId: 
   doorLockedMessage: 
+  audioLocation: {fileID: 0}
   OnUnlocked:
     m_PersistentCalls:
       m_Calls: []
-  isDoubleDoor: 0
-  otherDoor: {fileID: 0}
-  interactMessage: Open
+  OnOpened:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClosed:
+    m_PersistentCalls:
+      m_Calls: []
+  isMoving: 0
+--- !u!95 &8719346383570942210
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5720982883347430029}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5720982883533007100
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,6 +206,7 @@ GameObject:
   - component: {fileID: 5720982883878533165}
   - component: {fileID: 5720982883878533166}
   - component: {fileID: 5720982883878533167}
+  - component: {fileID: 5788828576004530816}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -255,6 +279,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5788828576004530816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5720982883878533162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11a643e14626ecf4ab73c0a84fec4cd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 5720982883347430031}
+  interactMessage: 
+  isInteractable: 1
 --- !u!1 &5720982884263953662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,5 +1057,5 @@ Transform:
   - {fileID: 5720982885101766605}
   - {fileID: 5720982883347430028}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
