@@ -961,7 +961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 6848698010761516146}
-  interactMessage: Interacct
+  interactMessage: Interact
   isInteractable: 1
 --- !u!1 &3734929499268848201
 GameObject:
