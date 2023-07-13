@@ -6,8 +6,11 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
     public UI_Controller UI_Controller;
+
     [Header("Inventory")]
     [SerializeField] private GameObject inventoryPanel;
+    [SerializeField] private GameObject itemViewPanel;
+    [SerializeField] private GameObject scrollButtons;
 
     [Header("Notify Text")]
     [SerializeField] private TextMeshProUGUI notifyText;
@@ -20,6 +23,8 @@ public class UIManager : MonoBehaviour
     {
         Instance = this;
         inventoryPanel.SetActive(false);
+        itemViewPanel.SetActive(false);
+        scrollButtons.SetActive(false);
 
         UI_Controller = new UI_Controller();
         UI_Controller.Map.Inventory.performed += x => ToggleInventory();
@@ -59,7 +64,20 @@ public class UIManager : MonoBehaviour
     }
     private void ToggleInventory()
     {
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        Cursor.visible = !Cursor.visible;
+        Player.Instance.MovementEnabled = !Player.Instance.MovementEnabled;
         inventoryPanel.SetActive(!inventoryPanel.activeInHierarchy);
+        itemViewPanel.SetActive(false);
+        scrollButtons.SetActive(false);
     }
 
 }

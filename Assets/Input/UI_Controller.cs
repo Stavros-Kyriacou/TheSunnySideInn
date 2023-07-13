@@ -41,7 +41,7 @@ public partial class @UI_Controller : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""58fd3ece-0e68-446b-9601-429afb5bec06"",
-                    ""path"": ""<Keyboard>/i"",
+                    ""path"": ""<Keyboard>/tab"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",

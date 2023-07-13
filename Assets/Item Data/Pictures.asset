@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 851e6e1e12f6ac145a131c6e7f49bb40, type: 3}
-  m_Name: Luggage
+  m_Name: Pictures
   m_EditorClassIdentifier: 
-  Name: Luggage
+  Name: Pictures
   Icons:
-  - {fileID: 21300000, guid: f82dfc5fc3c5a8f4080a3550427019c8, type: 3}
+  - {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
+  - {fileID: 21300000, guid: fd098fb4cf57bad419701c802e442b7e, type: 3}
+  - {fileID: 21300000, guid: 17035c204825f6340a252046ab6476fd, type: 3}
