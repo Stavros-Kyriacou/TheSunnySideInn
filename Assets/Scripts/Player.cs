@@ -34,6 +34,30 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        playerMovement = GetComponent<PlayerMovement>();
+        cameraController = GetComponent<CameraController>();
+    }
+    public void SlowMovement(float duration)
+    {
+        StartCoroutine(SlowMovementRoutine(duration));
+    }
+    public IEnumerator SlowMovementRoutine(float duration)
+    {
+        float movementSpeed = playerMovement.MoveSpeed;
+        float xSens = cameraController.X_Sensitivity;
+        float ySens = cameraController.Y_Sensitivity;
+
+        playerMovement.MoveSpeed = 0.8f;
+        cameraController.X_Sensitivity = 10;
+        cameraController.Y_Sensitivity = 10;
+
+        yield return new WaitForSeconds(duration);
+
+        playerMovement.MoveSpeed = movementSpeed;
+        cameraController.X_Sensitivity = xSens;
+        cameraController.Y_Sensitivity = ySens;
+
+        yield return null;
     }
     private void OnDisable()
     {

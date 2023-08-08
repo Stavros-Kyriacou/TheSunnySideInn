@@ -30,12 +30,23 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded;
     private float groundDistance = 0.4f;
 
-
     private float horizontalMovement, verticalMovement;
     private Vector3 moveDirection;
     private Vector3 slopeMoveDirection;
     private Rigidbody rb;
     private RaycastHit slopeHit;
+
+    public float MoveSpeed
+    {
+        get
+        {
+            return moveSpeed;
+        }
+        set
+        {
+            moveSpeed = value;
+        }
+    }
 
     private bool OnSlope()
     {
@@ -62,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         if (!Player.Instance.MovementEnabled) return;
-        
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         MyInput();
