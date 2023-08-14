@@ -184,6 +184,7 @@ public class CombinationLock : MonoBehaviour, IInteractable
     {
         //Disable player and camera movement
         Player.Instance.MovementEnabled = false;
+        Player.Instance.CameraEnabled = false;
         Player.Instance.InteractionEnabled = false;
 
         //Move camera to look position and rotate towards the lock
@@ -205,6 +206,7 @@ public class CombinationLock : MonoBehaviour, IInteractable
         cameraHolder.CameraState = CameraState.PLAYER;
 
         Player.Instance.MovementEnabled = true;
+        Player.Instance.CameraEnabled = true;
         Player.Instance.InteractionEnabled = true;
     }
 }

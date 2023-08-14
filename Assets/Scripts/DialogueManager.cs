@@ -32,6 +32,7 @@ public class DialogueManager : MonoBehaviour
         currentDialogueTrigger = dialogueTrigger;
 
         Player.Instance.MovementEnabled = false;
+        Player.Instance.CameraEnabled = false;
         Player.Instance.InteractionEnabled = false;
         dialogueBox.SetActive(true);
 
@@ -81,6 +82,7 @@ public class DialogueManager : MonoBehaviour
     private void EndDialogue()
     {
         Player.Instance.MovementEnabled = true;
+        Player.Instance.CameraEnabled = true;
         Player.Instance.InteractionEnabled = true;
 
         if (currentDialogueTrigger.currentDialogueIndex < (1 - currentDialogueTrigger.currentDialogueIndex))

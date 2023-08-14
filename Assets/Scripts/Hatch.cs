@@ -28,6 +28,8 @@ public class Hatch : MonoBehaviour, IInteractable
         animator.Play("Open_Hatch");
         isInteractable = false;
         interactMessage = "";
+        var collider = GetComponent<BoxCollider>();
+        collider.enabled = false;
 
         OnInteract.Invoke();
     }
