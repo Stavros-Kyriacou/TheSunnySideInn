@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public bool Luggage_Placed { get; set; }
     public bool Inspect_Room_207 { get; set; }
     public bool Room_207_Key_Acquired { get; set; }
+    public bool Screwdriver_Acquired { get; set; }
     private void Awake()
     {
         if (Instance != null && Instance != this)
