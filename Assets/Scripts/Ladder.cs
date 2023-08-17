@@ -12,6 +12,9 @@ public class Ladder : MonoBehaviour, IInteractable
     [SerializeField] private Transform cameraTarget;
     [SerializeField] private string interactMessage;
     [SerializeField] private bool isInteractable;
+    private bool climbedLadder = false;
+    private BoxCollider ladderCollider;
+    private Rigidbody playerRigidBody;
     public bool IsInteractable { get { return isInteractable; } set { isInteractable = value; } }
     public string InteractMessage { get { return interactMessage; } set { interactMessage = value; } }
     private void Awake()
@@ -19,25 +22,33 @@ public class Ladder : MonoBehaviour, IInteractable
         IsInteractable = isInteractable;
         InteractMessage = interactMessage;
     }
+    void Start()
+    {
+        ladderCollider = GetComponent<BoxCollider>();
+        playerRigidBody = Player.Instance.GetComponent<Rigidbody>();
+    }
     public void Interact()
     {
-        isInteractable = false;
-        interactMessage = "";
-        StartCoroutine("ClimbLadder");
+        if (climbedLadder)
+        {
+            StartCoroutine("ClimbDownLadder");
+        }
+        else
+        {
+            StartCoroutine("ClimbUpLadder");
+        }
+
         OnInteract.Invoke();
     }
-    IEnumerator ClimbLadder()
+    IEnumerator ClimbUpLadder()
     {
-        //Get player rigidbody
-        Rigidbody playerRigidBody = Player.Instance.GetComponent<Rigidbody>();
-
         //Disable ladder collider
-        BoxCollider boxCollider = GetComponent<BoxCollider>();
-        boxCollider.enabled = false;
+        ladderCollider.enabled = false;
 
         //Disable player movement
         Player.Instance.MovementEnabled = false;
-        Player.Instance.CameraEnabled = false;
+        // Player.Instance.CameraEnabled = false;
+        Player.Instance.InteractionEnabled = false;
 
         //Calculate target position and animation time
         Vector3 startPos = Player.Instance.transform.position;
@@ -80,12 +91,27 @@ public class Ladder : MonoBehaviour, IInteractable
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        
+
         playerRigidBody.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
 
-        boxCollider.enabled = true;
-        Player.Instance.MovementEnabled = true;
-        Player.Instance.CameraEnabled = true;
+        ladderCollider.enabled = true;
+        // Player.Instance.MovementEnabled = true;
+        // Player.Instance.CameraEnabled = true;
+        Player.Instance.InteractionEnabled = true;
+        climbedLadder = true;
         yield return null;
+    }
+    IEnumerator ClimbDownLadder()
+    {
+        ladderCollider.enabled = false;
+        playerRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+        Player.Instance.InteractionEnabled = false;
+
+        yield return new WaitForSeconds(1.5f);
+
+        Player.Instance.InteractionEnabled = true;
+        Player.Instance.MovementEnabled = true;
+        ladderCollider.enabled = true;
+        climbedLadder = false;
     }
 }

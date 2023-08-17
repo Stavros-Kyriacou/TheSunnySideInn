@@ -74,7 +74,7 @@ public class UIManager : MonoBehaviour
         }
 
         Cursor.visible = !Cursor.visible;
-        Player.Instance.MovementEnabled = !Player.Instance.MovementEnabled;
+        Player.Instance.CameraEnabled = !Player.Instance.CameraEnabled;
         inventoryPanel.SetActive(!inventoryPanel.activeInHierarchy);
         itemViewPanel.SetActive(false);
         scrollButtons.SetActive(false);
