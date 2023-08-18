@@ -10,30 +10,13 @@ public class CameraController : MonoBehaviour
     private float mouseX;
     private float mouseY;
     private float sensMultiplier = 0.01f;
-    private float xRotation;
-    private float yRotation;
-    public float X_Sensitivity
-    {
-        get
-        {
-            return xSensitivity;
-        }
-        set
-        {
-            xSensitivity = value;
-        }
-    }
-    public float Y_Sensitivity
-    {
-        get
-        {
-            return ySensitivity;
-        }
-        set
-        {
-            ySensitivity = value;
-        }
-    }
+    [SerializeField] private float xRotation;
+    [SerializeField] private float yRotation;
+    public float X_Rotation { get { return xRotation; } set { xRotation = value; } }
+    public float Y_Rotation { get { return yRotation; } set { yRotation = value; } }
+    public float X_Sensitivity { get { return xSensitivity; } set { xSensitivity = value; } }
+    public float Y_Sensitivity { get { return ySensitivity; } set { ySensitivity = value; } }
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -41,7 +24,7 @@ public class CameraController : MonoBehaviour
     }
     private void Update()
     {
-        if (!Player.Instance.MovementEnabled) return;
+        if (!Player.Instance.CameraEnabled) return;
 
         MyInput();
 
