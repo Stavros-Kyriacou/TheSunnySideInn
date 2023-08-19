@@ -45,12 +45,10 @@ public class Ladder : MonoBehaviour, IInteractable
     }
     IEnumerator ClimbUpLadder()
     {
-        //Disable ladder collider
         ladderCollider.enabled = false;
 
         //Disable player movement
         Player.Instance.MovementEnabled = false;
-        // Player.Instance.CameraEnabled = false;
         Player.Instance.InteractionEnabled = false;
 
         //Calculate target position and animation time
@@ -75,6 +73,7 @@ public class Ladder : MonoBehaviour, IInteractable
         //Fix camera position
         Vector3 direction = cameraTarget.position - Player.Instance.transform.position;
         Player.Instance.cameraController.X_Rotation = 0;
+
         if (direction.z < 1)
         {
             Player.Instance.cameraController.Y_Rotation = 180;
@@ -88,18 +87,19 @@ public class Ladder : MonoBehaviour, IInteractable
         elapsedTime = 0f;
         startPos = Player.Instance.transform.position;
         float climbAnimationTime = 3f;
+
         while (elapsedTime < climbAnimationTime)
         {
+            //Move player
             playerRigidBody.MovePosition(Vector3.Lerp(startPos, ladderTop.position, elapsedTime / climbAnimationTime));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
+        //Freeze rigid body
         playerRigidBody.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
 
         ladderCollider.enabled = true;
-        // Player.Instance.MovementEnabled = true;
-        // Player.Instance.CameraEnabled = true;
         Player.Instance.InteractionEnabled = true;
         climbedLadder = true;
         yield return null;
