@@ -10,6 +10,8 @@ public class Ladder : MonoBehaviour, IInteractable
     [SerializeField] private Transform ladderBottom;
     [SerializeField] private MoveCamera cameraHolder;
     [SerializeField] private Transform cameraTarget;
+    [SerializeField] private Elevator elevator;
+    [SerializeField] private Carriage carriage;
     [SerializeField] private string interactMessage;
     [SerializeField] private bool isInteractable;
     private bool climbedLadder = false;
@@ -17,6 +19,7 @@ public class Ladder : MonoBehaviour, IInteractable
     private Rigidbody playerRigidBody;
     public bool IsInteractable { get { return isInteractable; } set { isInteractable = value; } }
     public string InteractMessage { get { return interactMessage; } set { interactMessage = value; } }
+    public bool ClimbedLadder { get { return climbedLadder; } }
     private void Awake()
     {
         IsInteractable = isInteractable;
@@ -107,11 +110,22 @@ public class Ladder : MonoBehaviour, IInteractable
         playerRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
         Player.Instance.InteractionEnabled = false;
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
 
         Player.Instance.InteractionEnabled = true;
         Player.Instance.MovementEnabled = true;
         ladderCollider.enabled = true;
         climbedLadder = false;
+
+        if (GameManager.Instance.Page_3_Acquired)
+        {
+            isInteractable = false;
+            Animator carriageAnimator = carriage.GetComponent<Animator>();
+            carriageAnimator.Play("Close_Hatch");
+            float animationDelay = carriageAnimator.GetCurrentAnimatorStateInfo(0).length;
+            Debug.Log(animationDelay);
+            yield return new WaitForSeconds(animationDelay);
+            elevator.TeleportPlayer();
+        }
     }
 }
