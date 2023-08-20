@@ -10,6 +10,8 @@ public class Ladder : MonoBehaviour, IInteractable
     [SerializeField] private Transform ladderBottom;
     [SerializeField] private MoveCamera cameraHolder;
     [SerializeField] private Transform cameraTarget;
+    [SerializeField] private Elevator elevator;
+    [SerializeField] private Carriage carriage;
     [SerializeField] private string interactMessage;
     [SerializeField] private bool isInteractable;
     private bool climbedLadder = false;
@@ -17,6 +19,7 @@ public class Ladder : MonoBehaviour, IInteractable
     private Rigidbody playerRigidBody;
     public bool IsInteractable { get { return isInteractable; } set { isInteractable = value; } }
     public string InteractMessage { get { return interactMessage; } set { interactMessage = value; } }
+    public bool ClimbedLadder { get { return climbedLadder; } }
     private void Awake()
     {
         IsInteractable = isInteractable;
@@ -42,12 +45,10 @@ public class Ladder : MonoBehaviour, IInteractable
     }
     IEnumerator ClimbUpLadder()
     {
-        //Disable ladder collider
         ladderCollider.enabled = false;
 
         //Disable player movement
         Player.Instance.MovementEnabled = false;
-        // Player.Instance.CameraEnabled = false;
         Player.Instance.InteractionEnabled = false;
 
         //Calculate target position and animation time
@@ -72,6 +73,7 @@ public class Ladder : MonoBehaviour, IInteractable
         //Fix camera position
         Vector3 direction = cameraTarget.position - Player.Instance.transform.position;
         Player.Instance.cameraController.X_Rotation = 0;
+
         if (direction.z < 1)
         {
             Player.Instance.cameraController.Y_Rotation = 180;
@@ -85,18 +87,19 @@ public class Ladder : MonoBehaviour, IInteractable
         elapsedTime = 0f;
         startPos = Player.Instance.transform.position;
         float climbAnimationTime = 3f;
+
         while (elapsedTime < climbAnimationTime)
         {
+            //Move player
             playerRigidBody.MovePosition(Vector3.Lerp(startPos, ladderTop.position, elapsedTime / climbAnimationTime));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
+        //Freeze rigid body
         playerRigidBody.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
 
         ladderCollider.enabled = true;
-        // Player.Instance.MovementEnabled = true;
-        // Player.Instance.CameraEnabled = true;
         Player.Instance.InteractionEnabled = true;
         climbedLadder = true;
         yield return null;
@@ -107,11 +110,21 @@ public class Ladder : MonoBehaviour, IInteractable
         playerRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
         Player.Instance.InteractionEnabled = false;
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
 
         Player.Instance.InteractionEnabled = true;
         Player.Instance.MovementEnabled = true;
         ladderCollider.enabled = true;
         climbedLadder = false;
+
+        if (GameManager.Instance.Page_3_Acquired)
+        {
+            isInteractable = false;
+            Animator carriageAnimator = carriage.GetComponent<Animator>();
+            carriageAnimator.Play("Close_Hatch");
+            float animationDelay = carriageAnimator.GetCurrentAnimatorStateInfo(0).length;
+            yield return new WaitForSeconds(animationDelay);
+            elevator.TeleportPlayerToBasement();
+        }
     }
 }

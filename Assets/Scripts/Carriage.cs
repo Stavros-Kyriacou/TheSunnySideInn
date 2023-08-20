@@ -8,14 +8,14 @@ public class Carriage : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            // other.transform.parent.parent = this.transform;
+            other.transform.parent.parent = this.transform;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
         {
-            // other.transform.parent.parent = null;
+            other.transform.parent.parent = null;
         }
     }
     public void HatchOpenAnimComplete()

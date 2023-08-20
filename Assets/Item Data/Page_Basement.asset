@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 851e6e1e12f6ac145a131c6e7f49bb40, type: 3}
-  m_Name: Bathroom Page
+  m_Name: Page_Basement
   m_EditorClassIdentifier: 
   Name: Page
   Icons:
-  - {fileID: 21300000, guid: c8a69ecdf54ac8e4b873466605de27ff, type: 3}
+  - {fileID: 21300000, guid: 8a6cca56e2b63344eb4769cd92d93ffb, type: 3}

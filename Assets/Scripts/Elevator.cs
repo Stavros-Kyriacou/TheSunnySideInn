@@ -3,6 +3,13 @@ using UnityEngine;
 
 public class Elevator : BaseElevator
 {
+    [SerializeField] private Ladder ladder;
+    [SerializeField] private GameObject elevatorLights;
+    [SerializeField] private GameObject elevatorLightsBasement;
+    [SerializeField] private GameObject warningLight;
+    [SerializeField] private GameObject warningLightBasement;
+    [SerializeField] private ElevatorButton carriageButton;
+    [SerializeField] private Carriage basementCarriage;
     protected override IEnumerator OpenDoors(ElevatorDoor door)
     {
         switch (door)
@@ -167,5 +174,29 @@ public class Elevator : BaseElevator
                 break;
         }
     }
+    public void StartBasementSequence()
+    {
+        //Close elevator doors
+        StartCoroutine(CloseDoors(ElevatorDoor.All));
 
+        //Disable elevator lights
+        elevatorLights.SetActive(false);
+        elevatorLightsBasement.SetActive(false);
+
+        //Disable elevator buttons
+        carriageButton.IsInteractable = false;
+
+        //Play warning light animation
+        Animator warningAnimator = warningLight.GetComponent<Animator>();
+        warningAnimator.SetTrigger("StartWarning");
+
+        Animator warningAnimatorBasement = warningLightBasement.GetComponent<Animator>();
+        warningAnimatorBasement.SetTrigger("StartWarning");
+    }
+    public void TeleportPlayerToBasement()
+    {
+        Vector3 playerLocalPosition = Player.Instance.transform.localPosition;
+        Player.Instance.transform.SetParent(basementCarriage.transform);
+        Player.Instance.transform.localPosition = playerLocalPosition;
+    }
 }

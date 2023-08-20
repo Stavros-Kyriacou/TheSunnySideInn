@@ -45,7 +45,7 @@ public class Door : MonoBehaviour
             doorLocked = startsLocked;
         }
     }
-    public void OpenDoor()
+    public void OpenDoor(int openSpeed)
     {
         if (requiresKey && doorLocked)
         {
@@ -75,7 +75,19 @@ public class Door : MonoBehaviour
         }
         else
         {
-            animator.SetTrigger("OnOpen");
+            switch (openSpeed)
+            {
+                case 0:
+                    animator.SetTrigger("OnOpen");
+                    break;
+                case 1:
+                    animator.SetTrigger("OnOpenSlow");
+                    break;
+                default:
+                    animator.SetTrigger("OnOpen");
+
+                    break;
+            }
         }
         doorOpen = !doorOpen;
     }
@@ -86,6 +98,7 @@ public class Door : MonoBehaviour
         animator.SetTrigger("OnClose");
         doorOpen = false;
     }
+
     private bool PlayerHasKey()
     {
         return InventoryManager.Instance.InventoryContainsKey(keyId);
@@ -93,7 +106,7 @@ public class Door : MonoBehaviour
     public void UnlockDoor()
     {
         doorLocked = false;
-        
+
         if (requiresKey)
         {
             UIManager.Instance.DisplayNotifyText("Unlocked");

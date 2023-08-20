@@ -15,6 +15,6 @@ public class DoorTrigger : MonoBehaviour, IInteractable
     {
         if (door == null) return;
 
-        door.OpenDoor();
+        door.OpenDoor(0);
     }
 }

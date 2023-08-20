@@ -127,6 +127,12 @@ public class BaseElevator : MonoBehaviour
             ChangeLights(ElevatorLights.Down);
         }
     }
+    public virtual void BasementButtonPress()
+    {
+        if (runningCoroutine != null || elevatorMoving) return;
+        
+        runningCoroutine = StartCoroutine(OpenDoors(ElevatorDoor.All));
+    }
     protected virtual IEnumerator OpenDoors(ElevatorDoor door)
     {
         return null;
