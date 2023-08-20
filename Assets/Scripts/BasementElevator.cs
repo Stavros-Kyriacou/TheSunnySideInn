@@ -265,20 +265,20 @@ public class BasementElevator : BaseElevator
                 break;
         }
     }
-    public void BasementButtonPress()
-    {
-        if (runningCoroutine != null) return;
+    // public void BasementButtonPress()
+    // {
+    //     if (runningCoroutine != null) return;
 
-        if (carriagePos == CarriagePosition.Basement && BasementDoorsClosed())
-        {
-            runningCoroutine = StartCoroutine(OpenDoors(ElevatorDoor.Basement));
-        }
-        else if (carriagePos == CarriagePosition.Basement && !BasementDoorsClosed())
-        {
-            runningCoroutine = StartCoroutine(CloseDoors(ElevatorDoor.Basement));
-        }
-        ChangeLights(ElevatorLights.Down);
-    }
+    //     if (carriagePos == CarriagePosition.Basement && BasementDoorsClosed())
+    //     {
+    //         runningCoroutine = StartCoroutine(OpenDoors(ElevatorDoor.Basement));
+    //     }
+    //     else if (carriagePos == CarriagePosition.Basement && !BasementDoorsClosed())
+    //     {
+    //         runningCoroutine = StartCoroutine(CloseDoors(ElevatorDoor.Basement));
+    //     }
+    //     ChangeLights(ElevatorLights.Down);
+    // }
     IEnumerator CarriageToBasement()
     {
         if (!GroundDoorsClosed() || !TopDoorsClosed() || !BasementDoorsClosed())

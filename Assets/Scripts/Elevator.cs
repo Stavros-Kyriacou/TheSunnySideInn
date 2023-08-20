@@ -192,13 +192,8 @@ public class Elevator : BaseElevator
 
         Animator warningAnimatorBasement = warningLightBasement.GetComponent<Animator>();
         warningAnimatorBasement.SetTrigger("StartWarning");
-
-        //Wait some time
-        //Teleport player to basement
-        //Play sound effects
-        
     }
-    public void TeleportPlayer()
+    public void TeleportPlayerToBasement()
     {
         Vector3 playerLocalPosition = Player.Instance.transform.localPosition;
         Player.Instance.transform.SetParent(basementCarriage.transform);

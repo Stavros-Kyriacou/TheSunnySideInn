@@ -5397,10 +5397,11 @@ MonoBehaviour:
   buttonType: 3
   elevator: {fileID: 7333882485702418150}
   basementElevator: {fileID: 0}
+  interactMessage: 
+  isInteractable: 1
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
-  interactMessage: 
 --- !u!1 &4654640541907319093
 GameObject:
   m_ObjectHideFlags: 0
@@ -6590,10 +6591,11 @@ MonoBehaviour:
   buttonType: 0
   elevator: {fileID: 7333882485702418150}
   basementElevator: {fileID: 0}
+  interactMessage: 
+  isInteractable: 1
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
-  interactMessage: 
 --- !u!1 &5547155102450768950
 GameObject:
   m_ObjectHideFlags: 0
@@ -8342,10 +8344,11 @@ MonoBehaviour:
   buttonType: 1
   elevator: {fileID: 7333882485702418150}
   basementElevator: {fileID: 0}
+  interactMessage: 
+  isInteractable: 1
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
-  interactMessage: 
 --- !u!1 &7094514158531580851
 GameObject:
   m_ObjectHideFlags: 0

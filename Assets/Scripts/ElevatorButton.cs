@@ -3,27 +3,26 @@ using UnityEngine.Events;
 
 public class ElevatorButton : MonoBehaviour, IInteractable
 {
+    public bool IsInteractable { get { return isInteractable; } set { isInteractable = value; } }
+    public string InteractMessage { get { return interactMessage; } set { interactMessage = value; } }
     [SerializeField] private ElevatorButtonType buttonType;
     [SerializeField] private Elevator elevator;
     [SerializeField] private BasementElevator basementElevator;
-    public UnityEvent OnInteract;
-
-    public bool IsInteractable { get; set; }
-    public string InteractMessage { get; set; }
     [SerializeField] private string interactMessage;
+    [SerializeField] private bool isInteractable;
+    public UnityEvent OnInteract;
     private void Awake()
     {
         IsInteractable = true;
         InteractMessage = interactMessage;
+        IsInteractable = isInteractable;
     }
 
     public void Interact()
-    {  
-
-        if (OnInteract.GetPersistentEventCount() != 0) {
-            
+    {
+        if (OnInteract.GetPersistentEventCount() != 0)
+        {
             OnInteract.Invoke();
-            return;
         }
 
         if (elevator != null)
@@ -38,6 +37,9 @@ public class ElevatorButton : MonoBehaviour, IInteractable
                     break;
                 case ElevatorButtonType.CarriageButton:
                     elevator.CarriageButtonPress();
+                    break;
+                case ElevatorButtonType.BasementButton:
+                    elevator.BasementButtonPress();
                     break;
                 default:
                     Debug.Log("Button type not assigned");

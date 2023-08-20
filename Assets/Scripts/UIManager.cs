@@ -6,6 +6,8 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
     public UI_Controller UI_Controller;
+    public Canvas canvas;
+    private Animator canvasAnimator;
 
     [Header("Inventory")]
     [SerializeField] private GameObject inventoryPanel;
@@ -22,6 +24,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        canvasAnimator = canvas.GetComponent<Animator>();
         inventoryPanel.SetActive(false);
         itemViewPanel.SetActive(false);
         scrollButtons.SetActive(false);
@@ -61,6 +64,17 @@ public class UIManager : MonoBehaviour
         notifyText.text = "";
 
         fadingText = null;
+    }
+    public void FadeToBlack(bool fadeToBlack)
+    {
+        if (fadeToBlack)
+        {
+            canvasAnimator.Play("Fade_In_Black");
+        }
+        else
+        {
+            canvasAnimator.Play("Fade_Out_Black");
+        }
     }
     private void ToggleInventory()
     {

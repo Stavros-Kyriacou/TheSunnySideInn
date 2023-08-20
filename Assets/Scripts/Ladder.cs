@@ -123,9 +123,8 @@ public class Ladder : MonoBehaviour, IInteractable
             Animator carriageAnimator = carriage.GetComponent<Animator>();
             carriageAnimator.Play("Close_Hatch");
             float animationDelay = carriageAnimator.GetCurrentAnimatorStateInfo(0).length;
-            Debug.Log(animationDelay);
             yield return new WaitForSeconds(animationDelay);
-            elevator.TeleportPlayer();
+            elevator.TeleportPlayerToBasement();
         }
     }
 }
