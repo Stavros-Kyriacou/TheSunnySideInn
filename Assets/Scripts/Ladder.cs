@@ -72,15 +72,15 @@ public class Ladder : MonoBehaviour, IInteractable
 
         //Fix camera position
         Vector3 direction = cameraTarget.position - Player.Instance.transform.position;
-        Player.Instance.cameraController.X_Rotation = 0;
+
 
         if (direction.z < 1)
         {
-            Player.Instance.cameraController.Y_Rotation = 180;
+            Player.Instance.cameraController.RotateCamera(0, 180);
         }
         else
         {
-            Player.Instance.cameraController.Y_Rotation = 0;
+            Player.Instance.cameraController.RotateCamera(0, 0);
         }
 
         //Climb ladder

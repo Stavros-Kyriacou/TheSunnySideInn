@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public static Player Instance;
     private PlayerMovement playerMovement;
     public CameraController cameraController;
+    [SerializeField] private CapsuleCollider playerCollider;
+    public bool ColliderEnabled { get { return playerCollider.enabled; } set { playerCollider.enabled = value; } }
     public bool MovementEnabled { get { return movementEnabled; } set { movementEnabled = value; } }
     public bool CameraEnabled { get { return cameraEnabled; } set { cameraEnabled = value; } }
     public bool InteractionEnabled { get { return interactionEnabled; } set { interactionEnabled = value; } }
@@ -16,6 +18,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        ColliderEnabled = true;
         playerMovement = GetComponent<PlayerMovement>();
         cameraController = GetComponent<CameraController>();
     }
@@ -40,6 +43,18 @@ public class Player : MonoBehaviour
         cameraController.Y_Sensitivity = ySens;
 
         yield return null;
+    }
+    public void EnableMovement(bool enabled)
+    {
+        if (enabled)
+        {
+            MovementEnabled = true;
+        }
+        else
+        {
+            MovementEnabled = false;
+            playerMovement.MoveDirection = Vector3.zero;
+        }
     }
     private void OnDisable()
     {

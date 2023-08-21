@@ -12,8 +12,8 @@ public class CameraController : MonoBehaviour
     private float sensMultiplier = 0.01f;
     [SerializeField] private float xRotation;
     [SerializeField] private float yRotation;
-    public float X_Rotation { get { return xRotation; } set { xRotation = value; } }
-    public float Y_Rotation { get { return yRotation; } set { yRotation = value; } }
+    public float X_Rotation { get { return xRotation; } private set { } }
+    public float Y_Rotation { get { return yRotation; } private set { } }
     public float X_Sensitivity { get { return xSensitivity; } set { xSensitivity = value; } }
     public float Y_Sensitivity { get { return ySensitivity; } set { ySensitivity = value; } }
 
@@ -41,5 +41,12 @@ public class CameraController : MonoBehaviour
         xRotation -= mouseY * ySensitivity * sensMultiplier;
 
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+    }
+    public void RotateCamera(float xRotation, float yRotation)
+    {
+        this.xRotation = xRotation;
+        this.yRotation = yRotation;
+        playerCam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        orientation.transform.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 }
