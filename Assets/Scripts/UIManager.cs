@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
     public UI_Controller UI_Controller;
     public Canvas canvas;
-    private Animator canvasAnimator;
+    public Animator canvasAnimator;
 
     [Header("Inventory")]
     [SerializeField] private GameObject inventoryPanel;

@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float horizontalMovement, verticalMovement;
     private Vector3 moveDirection;
+    public Vector3 MoveDirection { get { return moveDirection; } set { moveDirection = value; } }
     private Vector3 slopeMoveDirection;
     private Rigidbody rb;
     private RaycastHit slopeHit;
