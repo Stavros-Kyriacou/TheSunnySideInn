@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;
     private PlayerMovement playerMovement;
+    private Rigidbody playerRigidbody;
     public CameraController cameraController;
     [SerializeField] private CapsuleCollider playerCollider;
     public bool ColliderEnabled { get { return playerCollider.enabled; } set { playerCollider.enabled = value; } }
@@ -21,6 +22,33 @@ public class Player : MonoBehaviour
         ColliderEnabled = true;
         playerMovement = GetComponent<PlayerMovement>();
         cameraController = GetComponent<CameraController>();
+        playerRigidbody = GetComponent<Rigidbody>();
+    }
+    public void MovePlayer(Vector3 startPosition, Vector3 endPosition, float movementDuration, bool cameraEnabled)
+    {
+        StartCoroutine(MovePlayerOverTime(startPosition, endPosition, movementDuration, cameraEnabled));
+    }
+    private IEnumerator MovePlayerOverTime(Vector3 startPosition, Vector3 endPosition, float movementDuration, bool cameraEnabled)
+    {
+        EnableMovement(false);
+        InteractionEnabled = false;
+        CameraEnabled = cameraEnabled;
+        playerRigidbody.isKinematic = true;
+
+        float elapsedTime = 0;
+        while (elapsedTime < movementDuration)
+        {
+            playerRigidbody.MovePosition(Vector3.Lerp(startPosition, endPosition, elapsedTime / movementDuration));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        playerRigidbody.transform.position = endPosition;
+
+        EnableMovement(true);
+        InteractionEnabled = true;
+        CameraEnabled = true;
+        playerRigidbody.isKinematic = false;
+        yield return null;
     }
     public void SlowMovement(float duration)
     {
@@ -36,7 +64,16 @@ public class Player : MonoBehaviour
         cameraController.X_Sensitivity = 10;
         cameraController.Y_Sensitivity = 10;
 
-        yield return new WaitForSeconds(duration);
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            cameraController.X_Sensitivity = Mathf.Lerp(10, xSens, elapsedTime / duration);
+            cameraController.Y_Sensitivity = Mathf.Lerp(10, ySens, elapsedTime / duration);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
 
         playerMovement.MoveSpeed = movementSpeed;
         cameraController.X_Sensitivity = xSens;
