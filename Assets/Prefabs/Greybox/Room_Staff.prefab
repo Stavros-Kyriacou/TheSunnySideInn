@@ -676,7 +676,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4274
+  m_VersionIndex: 4532
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1405,7 +1405,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3050
+  m_VersionIndex: 3182
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3070,7 +3070,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6612323876200778334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3699455, y: 3.12, z: 2.690092}
+  m_LocalPosition: {x: 3.3699455, y: 2.62, z: 2.690092}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3128,7 +3128,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -3226,7 +3226,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6612323876286570776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.6199465, y: 3.12, z: 6.7800922}
+  m_LocalPosition: {x: 8.6199465, y: 2.62, z: 6.7800922}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3284,7 +3284,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -4059,7 +4059,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6612323877328467827}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.307, y: 3.12, z: 8.031}
+  m_LocalPosition: {x: 2.307, y: 2.62, z: 8.031}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4117,7 +4117,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -4504,7 +4504,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6797682536603254204}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.21, y: 3.12, z: 3.35}
+  m_LocalPosition: {x: 10.21, y: 2.62, z: 3.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4562,7 +4562,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -5106,7 +5106,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1840
+  m_VersionIndex: 2101
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5246,17 +5246,27 @@ PrefabInstance:
     - target: {fileID: 6470342444796712386, guid: ac47eb13185eb444cac4e440b00a972f,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 3330
+      value: 3588
       objectReference: {fileID: 0}
     - target: {fileID: 6470342445094677076, guid: ac47eb13185eb444cac4e440b00a972f,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4058
+      value: 4316
+      objectReference: {fileID: 0}
+    - target: {fileID: 6470342445827787009, guid: ac47eb13185eb444cac4e440b00a972f,
+        type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6470342445827787010, guid: ac47eb13185eb444cac4e440b00a972f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.353
       objectReference: {fileID: 0}
     - target: {fileID: 6470342445837841776, guid: ac47eb13185eb444cac4e440b00a972f,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 3232
+      value: 3493
       objectReference: {fileID: 0}
     - target: {fileID: 6470342446368992154, guid: ac47eb13185eb444cac4e440b00a972f,
         type: 3}
@@ -5434,7 +5444,7 @@ PrefabInstance:
     - target: {fileID: 8210697957347199879, guid: 0f4696ff37bd871469f80cd0ded861fd,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1435
+      value: 1693
       objectReference: {fileID: 0}
     - target: {fileID: 8210697957347199879, guid: 0f4696ff37bd871469f80cd0ded861fd,
         type: 3}
@@ -5577,6 +5587,11 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 6612323876282562932}
     m_Modifications:
+    - target: {fileID: 3734929498017994651, guid: 51f3b1223d8e72c42a0dd513ca2b835f,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 3155
+      objectReference: {fileID: 0}
     - target: {fileID: 3734929498506036538, guid: 51f3b1223d8e72c42a0dd513ca2b835f,
         type: 3}
       propertyPath: m_Name
@@ -5841,7 +5856,7 @@ PrefabInstance:
     - target: {fileID: 3734929498017994651, guid: 51f3b1223d8e72c42a0dd513ca2b835f,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 5156
+      value: 5417
       objectReference: {fileID: 0}
     - target: {fileID: 3734929498506036538, guid: 51f3b1223d8e72c42a0dd513ca2b835f,
         type: 3}

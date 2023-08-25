@@ -426,9 +426,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combinationLock: {fileID: 1310251219259282476}
-  lockedText: {fileID: 0}
   unlockedRotationAmount: -90
   doorMovementDuration: 1
+  interactMessage: 
 --- !u!65 &268900042896914968
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -459,7 +459,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &268900042950450714
 Transform:
