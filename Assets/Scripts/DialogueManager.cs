@@ -10,18 +10,20 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI dialogueText;
-    [SerializeField] private Queue<string> sentences;
+    [SerializeField] private Queue<Sentence> sentences;
     private DialogueTrigger currentDialogueTrigger;
     private bool dialogueActive = false;
     private bool typingSentence = false;
-    private string currentSentence;
+    private Sentence currentSentence;
+    private string currentSentenceString;
+    private string currentSpeakerString;
     private void Awake()
     {
         Instance = this;
     }
     private void Start()
     {
-        sentences = new Queue<string>();
+        sentences = new Queue<Sentence>();
         dialogueBox.SetActive(false);
     }
     public void StartDialogue(DialogueTrigger dialogueTrigger)
@@ -30,15 +32,17 @@ public class DialogueManager : MonoBehaviour
 
         dialogueActive = true;
         currentDialogueTrigger = dialogueTrigger;
+        currentDialogueTrigger.OnDialogueStart.Invoke();
 
         Player.Instance.MovementEnabled = false;
         Player.Instance.CameraEnabled = false;
         Player.Instance.InteractionEnabled = false;
         dialogueBox.SetActive(true);
 
-        nameText.text = dialogueTrigger.name;
+        // nameText.text = dialogueTrigger.name;
 
-        var currentDialogue = dialogueTrigger.dialogues[dialogueTrigger.currentDialogueIndex];
+        var currentDialogue = dialogueTrigger.dialogue;
+        
 
         sentences.Clear();
 
@@ -46,7 +50,6 @@ public class DialogueManager : MonoBehaviour
         {
             sentences.Enqueue(sentence);
         }
-
         DisplayNextSentence();
     }
 
@@ -62,11 +65,12 @@ public class DialogueManager : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(TypeSentence(currentSentence));
     }
-    IEnumerator TypeSentence(string sentence)
+    IEnumerator TypeSentence(Sentence sentence)
     {
         typingSentence = true;
         dialogueText.text = "";
-        foreach (var letter in sentence)
+        nameText.text = currentSentence.speaker;
+        foreach (var letter in sentence.sentence)
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.02f);
@@ -77,7 +81,7 @@ public class DialogueManager : MonoBehaviour
     {
         StopAllCoroutines();
         typingSentence = false;
-        dialogueText.text = currentSentence;
+        dialogueText.text = currentSentence.sentence;
     }
     private void EndDialogue()
     {
@@ -85,10 +89,10 @@ public class DialogueManager : MonoBehaviour
         Player.Instance.CameraEnabled = true;
         Player.Instance.InteractionEnabled = true;
 
-        if (currentDialogueTrigger.currentDialogueIndex < (1 - currentDialogueTrigger.currentDialogueIndex))
-        {
-            currentDialogueTrigger.currentDialogueIndex++;
-        }
+        // if (currentDialogueTrigger.currentDialogueIndex < (1 - currentDialogueTrigger.currentDialogueIndex))
+        // {
+        //     currentDialogueTrigger.currentDialogueIndex++;
+        // }
         dialogueActive = false;
         dialogueBox.SetActive(false);
         currentDialogueTrigger.OnDialogueComplete.Invoke();
@@ -121,6 +125,11 @@ public class DialogueManager : MonoBehaviour
 [System.Serializable]
 public class Dialogue
 {
-    [TextArea(3, 10)]
-    public string[] sentences;
+    public Sentence[] sentences;
+}
+[System.Serializable]
+public class Sentence
+{
+    public string speaker;
+    [TextArea(3, 10)] public string sentence;
 }

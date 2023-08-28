@@ -3,9 +3,8 @@ using UnityEngine.Events;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    public string Name;
-    public Dialogue[] dialogues;
-    public int currentDialogueIndex = 0;
+    public Dialogue dialogue;
+    public UnityEvent OnDialogueStart;
     public UnityEvent OnDialogueComplete;
     public void TriggerDialogue()
     {
