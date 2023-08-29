@@ -30,7 +30,7 @@ public class SecurityGuard : NPC
                     doors[2].CloseDoor();
                 }
             }
-            
+
             yield return new WaitForSeconds(duration);
         }
 
@@ -51,7 +51,7 @@ public class SecurityGuard : NPC
             yield return null;
         }
         gameObject.transform.position = endPosition;
-        Debug.Log("checking if door open");
+  
         foreach (var door in doors)
         {
             if (Vector3.Distance(door.transform.position, transform.position) < 2f && !door.IsOpen)
