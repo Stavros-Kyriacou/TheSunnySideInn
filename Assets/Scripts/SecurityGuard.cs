@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class SecurityGuard : NPC
 {
-    [SerializeField] private Door securityRoomDoor;
-    [SerializeField] private Door elevatorEntranceDoor;
-    [SerializeField] private Door kitchenDoor;
+    [SerializeField] private Door[] doors;
     [SerializeField] private Transform[] movementLocations;
+    [SerializeField] private Transform kitchenDoorCollider;
     [SerializeField] private float moveSpeed;
     public void StartMovement()
     {
@@ -17,13 +16,26 @@ public class SecurityGuard : NPC
     {
         float duration = 0f;
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < movementLocations.Length - 1; i++)
         {
             duration = Vector3.Distance(movementLocations[i].position, movementLocations[i + 1].position) / moveSpeed;
             StartCoroutine(Move(movementLocations[i].position, movementLocations[i + 1].position, duration));
             StartCoroutine(Rotate(movementLocations[i + 1].position));
+
+            //close the kitchen doors after entering
+            if (i == 5)
+            {
+                if (doors[2].IsOpen)
+                {
+                    doors[2].CloseDoor();
+                }
+            }
+            
             yield return new WaitForSeconds(duration);
         }
+
+        kitchenDoorCollider.gameObject.SetActive(false);
+        gameObject.SetActive(false);
 
         yield return null;
     }
@@ -39,6 +51,15 @@ public class SecurityGuard : NPC
             yield return null;
         }
         gameObject.transform.position = endPosition;
+        Debug.Log("checking if door open");
+        foreach (var door in doors)
+        {
+            if (Vector3.Distance(door.transform.position, transform.position) < 2f && !door.IsOpen)
+            {
+                door.OpenDoor(0);
+            }
+        }
+
         yield return null;
     }
     private IEnumerator Rotate(Vector3 target)
@@ -54,5 +75,9 @@ public class SecurityGuard : NPC
             yield return null;
         }
         yield return null;
+    }
+    public void Rotate(Transform target)
+    {
+        StartCoroutine(Rotate(target.position));
     }
 }

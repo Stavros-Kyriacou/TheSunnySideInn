@@ -228,7 +228,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-942434
+  m_Name: pb_Mesh-12640
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -3934,7 +3934,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-961646
+  m_Name: pb_Mesh28752
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -5016,7 +5016,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-938394
+  m_Name: pb_Mesh-7576
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -16392,7 +16392,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-948022
+  m_Name: pb_Mesh-9964
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -17172,6 +17172,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 623298668}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &764077076 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6633418369776002065, guid: ae26e1eeabe90f64d84cf37f5ed3bf63,
+    type: 3}
+  m_PrefabInstance: {fileID: 623298668}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc261d715fd4004caed5c666ec76501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &765901495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17488,7 +17500,19 @@ MonoBehaviour:
       sentence: ' I''ll be right back. You stay here.'
   OnDialogueStart:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 780930947}
+        m_TargetAssemblyTypeName: SecurityGuard, Assembly-CSharp
+        m_MethodName: Rotate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1669287777}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDialogueComplete:
     m_PersistentCalls:
       m_Calls:
@@ -17496,6 +17520,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: SecurityGuard, Assembly-CSharp
         m_MethodName: StartMovement
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 780930947}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: set_IsInteractable
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -17518,9 +17554,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRoomKey: {fileID: 0}
   interactMessage: Speak
-  securityRoomDoor: {fileID: 0}
-  elevatorEntranceDoor: {fileID: 0}
-  kitchenDoor: {fileID: 0}
+  doors:
+  - {fileID: 2063249569}
+  - {fileID: 1239746023}
+  - {fileID: 764077076}
   movementLocations:
   - {fileID: 1504583582}
   - {fileID: 2145861467}
@@ -17529,6 +17566,7 @@ MonoBehaviour:
   - {fileID: 136349908}
   - {fileID: 1491173419}
   - {fileID: 817433992}
+  kitchenDoorCollider: {fileID: 2137060320}
   moveSpeed: 2.5
 --- !u!1001 &785678726
 PrefabInstance:
@@ -17927,7 +17965,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817433991}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.46, y: 1.25, z: 15.23}
+  m_LocalPosition: {x: -16.46, y: 1.25, z: 23.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22555,7 +22593,7 @@ PrefabInstance:
     - target: {fileID: 1122223119682172096, guid: f9155e4b241eeab4da5df646451bfbda,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 5165
+      value: 5171
       objectReference: {fileID: 0}
     - target: {fileID: 1122223119682172099, guid: f9155e4b241eeab4da5df646451bfbda,
         type: 3}
@@ -27520,6 +27558,18 @@ Transform:
   m_Father: {fileID: 1031730843}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1239746023 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6848698010761516146, guid: 51f3b1223d8e72c42a0dd513ca2b835f,
+    type: 3}
+  m_PrefabInstance: {fileID: 597091159}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc261d715fd4004caed5c666ec76501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1239751656
 GameObject:
   m_ObjectHideFlags: 0
@@ -29953,8 +30003,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305722017}
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 1.8749444, y: 0.1249992, z: -8.499802}
-  m_LocalScale: {x: 2.501092, y: 0.25, z: 23.74955}
+  m_LocalPosition: {x: 3.2499447, y: 0.1249992, z: -8.4998045}
+  m_LocalScale: {x: 2.501092, y: 0.25, z: 20.999352}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1239751657}
@@ -30029,7 +30079,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-942906
+  m_Name: pb_Mesh-6350
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -35566,6 +35616,7 @@ Transform:
   - {fileID: 764077075}
   - {fileID: 1031730843}
   - {fileID: 2105904111}
+  - {fileID: 2137060320}
   m_Father: {fileID: 1726189525}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43185,7 +43236,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803995728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.54, y: 1.25, z: 18.48}
+  m_LocalPosition: {x: 11.54, y: 1.25, z: 18.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51809,6 +51860,51 @@ Transform:
   m_Father: {fileID: 761658176}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2137060319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2137060320}
+  - component: {fileID: 2137060321}
+  m_Layer: 0
+  m_Name: Kitchen Door Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2137060320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137060319}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.750021, y: 2.125, z: 8.6249695}
+  m_LocalScale: {x: 0.50002503, y: 3.2498999, z: 4.7497997}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1539568498}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2137060321
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137060319}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2143272727
 GameObject:
   m_ObjectHideFlags: 0
@@ -51936,7 +52032,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145861466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.54, y: 1.25, z: 22.48}
+  m_LocalPosition: {x: 11.54, y: 1.25, z: 22.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
