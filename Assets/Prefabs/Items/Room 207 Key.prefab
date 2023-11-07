@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8343901547536571055}
   - component: {fileID: 8343901547536571048}
   - component: {fileID: 8343901547536571049}
+  - component: {fileID: 5373111743702291458}
   m_Layer: 0
   m_Name: Room 207 Key
   m_TagString: Untagged
@@ -116,3 +117,16 @@ MonoBehaviour:
       m_Calls: []
   interactMessage: Room 207 Key
   isInteractable: 0
+--- !u!114 &5373111743702291458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8343901547536571050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17fbc775afa6a9d4bbda0133736362e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 08b4ba6cd22a9ab4986a13fff034f354, type: 3}

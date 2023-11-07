@@ -28,6 +28,8 @@ public class Door : MonoBehaviour
     private bool doorLocked;
     private bool doorOpen = false;
 
+    public bool IsOpen { get { return doorOpen; } }
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
