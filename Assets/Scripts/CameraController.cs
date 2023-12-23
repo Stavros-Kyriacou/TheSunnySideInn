@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private float xSensitivity;
     [SerializeField] private float ySensitivity;
+    [SerializeField] private MoveCamera cameraHolder;
     [SerializeField] private Transform playerCam;
     [SerializeField] private Transform orientation;
     private float mouseX;
@@ -48,5 +50,27 @@ public class CameraController : MonoBehaviour
         this.yRotation = yRotation;
         playerCam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.transform.rotation = Quaternion.Euler(0, yRotation, 0);
+    }
+    public void RotateCameraOverTime(Transform target, float duration)
+    {
+        Debug.Log("rotate camera over time");
+        Player.Instance.CameraEnabled = false;
+        cameraHolder.transform.LookAt(target);
+        Player.Instance.CameraEnabled = true;
+        // StartCoroutine(RotateCameraOverTimeRoutine(target, duration));
+    }
+    public IEnumerator RotateCameraOverTimeRoutine(Transform target, float duration)
+    {
+        Player.Instance.CameraEnabled = false;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            cameraHolder.transform.LookAt(target);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        Player.Instance.CameraEnabled = true;
     }
 }

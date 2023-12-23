@@ -18,6 +18,8 @@ public class NPCMovement : MonoBehaviour
     [SerializeField] private Transform basementPosition1;
     [SerializeField] private Transform basementPosition2;
     [SerializeField] private float basementMovementDuration;
+    [SerializeField] private MoveCamera moveCamera;
+    [SerializeField] private Animator cameraAnimator;
 
     private void Awake()
     {
@@ -66,17 +68,37 @@ public class NPCMovement : MonoBehaviour
     }
     private IEnumerator BasementMovement()
     {
+        // if (Player.Instance.cameraController.X_Rotation) {
+
+        // }
+
+
+
+        Debug.Log(1530 % 360);
+        Debug.Log(-90 % 360);
         Vector3 startPosition = transform.position;
+        Vector3 endPosition = new Vector3(Player.Instance.transform.position.x, Player.Instance.transform.position.y + 0.5f, Player.Instance.transform.position.z);
 
-        //Move to first position
-        StartCoroutine(Move(startPosition, basementPosition1.position, basementMovementDuration / 2));
-        yield return new WaitForSeconds(basementMovementDuration / 2);
+        //fly towards player
+        StartCoroutine(Move(startPosition, endPosition, basementMovementDuration));
 
-        //Move to second position
-        StartCoroutine(Move(transform.position, basementPosition2.position, basementMovementDuration / 2));
-        yield return new WaitForSeconds(basementMovementDuration / 2);
+        //Disable camera movement
+        //Swap to animation camera
+        //Animation is triggered by overlap event trigger
+        Player.Instance.CameraEnabled = false;
+        Player.Instance.cameraController.RotateCamera(Player.Instance.cameraController.X_Rotation, 180);
+        moveCamera.ToggleAnimationCamera(true);
 
+        yield return new WaitForSeconds(basementMovementDuration);
+
+        //TODO 
+        //if player is not facing direction of sam
+        //rotate player
+        
+        //Disable samantha
         gameObject.SetActive(false);
+
+        yield return null;
     }
     private IEnumerator Move(Vector3 startPos, Vector3 endPos, float movementDuration)
     {

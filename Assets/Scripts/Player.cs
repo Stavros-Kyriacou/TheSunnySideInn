@@ -8,11 +8,13 @@ public class Player : MonoBehaviour
     private PlayerMovement playerMovement;
     private Rigidbody playerRigidbody;
     public CameraController cameraController;
+    [SerializeField] private Transform lookUpTarget;
     [SerializeField] private CapsuleCollider playerCollider;
     public bool ColliderEnabled { get { return playerCollider.enabled; } set { playerCollider.enabled = value; } }
     public bool MovementEnabled { get { return movementEnabled; } set { movementEnabled = value; } }
     public bool CameraEnabled { get { return cameraEnabled; } set { cameraEnabled = value; } }
     public bool InteractionEnabled { get { return interactionEnabled; } set { interactionEnabled = value; } }
+    public Transform LookUpTarget { get { return lookUpTarget; } }
     private bool movementEnabled = true;
     private bool cameraEnabled = true;
     private bool interactionEnabled = true;

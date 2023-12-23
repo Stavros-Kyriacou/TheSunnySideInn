@@ -14,10 +14,13 @@ public class MoveCamera : MonoBehaviour
         }
     }
     private CameraState cameraState;
+    [SerializeField] private Camera playerCamera;
+    [SerializeField] private Camera animationCamera;
     [SerializeField] private Transform playerCameraPosition;
     [SerializeField] private Transform doorUnlockPosition;
     private void Awake()
     {
+        ToggleAnimationCamera(false);
         cameraState = CameraState.PLAYER;
     }
     private void Update()
@@ -33,6 +36,19 @@ public class MoveCamera : MonoBehaviour
             default:
                 transform.position = playerCameraPosition.position;
                 break;
+        }
+    }
+    public void ToggleAnimationCamera(bool enabled)
+    {
+        if (enabled)
+        {
+            playerCamera.gameObject.SetActive(false);
+            animationCamera.gameObject.SetActive(true);
+        }
+        else
+        {
+            playerCamera.gameObject.SetActive(true);
+            animationCamera.gameObject.SetActive(false);
         }
     }
 }
