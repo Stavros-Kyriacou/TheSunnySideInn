@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private float xSensitivity;
     [SerializeField] private float ySensitivity;
+    [SerializeField] private MoveCamera cameraHolder;
     [SerializeField] private Transform playerCam;
     [SerializeField] private Transform orientation;
     private float mouseX;
@@ -48,5 +50,29 @@ public class CameraController : MonoBehaviour
         this.yRotation = yRotation;
         playerCam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.transform.rotation = Quaternion.Euler(0, yRotation, 0);
+    }
+    public void RotateCameraOverTime(float endXRotation, float endYRotation, float duration, bool enableCameraMovementEnd)
+    {
+        StartCoroutine(RotateCameraOverTimeRoutine(endXRotation, endYRotation, duration, enableCameraMovementEnd));
+    }
+    private IEnumerator RotateCameraOverTimeRoutine(float endXRotation, float endYRotation, float duration, bool enableCameraMovementEnd)
+    {
+        Player.Instance.CameraEnabled = false;
+        float elapsedTime = 0f;
+        float startXRot = X_Rotation;
+        float startYRot = Y_Rotation;
+        float currentXRot = 0;
+        float currentYRot = 0;
+
+        while (elapsedTime < duration)
+        {
+            currentXRot = Mathf.Lerp(startXRot, endXRotation, elapsedTime / duration);
+            currentYRot = Mathf.Lerp(startYRot, endYRotation, elapsedTime / duration);
+            RotateCamera(currentXRot, currentYRot);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        RotateCamera(endXRotation, endYRotation);
+        Player.Instance.CameraEnabled = enableCameraMovementEnd;
     }
 }

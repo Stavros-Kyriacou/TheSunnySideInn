@@ -18,6 +18,8 @@ public class NPCMovement : MonoBehaviour
     [SerializeField] private Transform basementPosition1;
     [SerializeField] private Transform basementPosition2;
     [SerializeField] private float basementMovementDuration;
+    [SerializeField] private MoveCamera moveCamera;
+    [SerializeField] private Animator cameraAnimator;
 
     private void Awake()
     {
@@ -66,17 +68,48 @@ public class NPCMovement : MonoBehaviour
     }
     private IEnumerator BasementMovement()
     {
+        
+
+        float yRot = Player.Instance.cameraController.Y_Rotation;
+        float xRot = Player.Instance.cameraController.X_Rotation;
+        float convertedYRot = 0;
+        float rotatePlayerTime = 0f;
+
+        if (yRot < 0)
+        {
+            convertedYRot = (yRot % 360) + 360;
+        }
+        else if (yRot > 360)
+        {
+            convertedYRot = yRot % 360;
+        }
+
+        if ((convertedYRot > 205 || convertedYRot < 155) || (xRot < -40 || xRot > 50))
+        {
+            //Not looking forward
+            Debug.Log("not looking forward");
+            rotatePlayerTime = 0.3f;
+        }
+        else
+        {
+            //Looking forward
+            Debug.Log("looking forward");
+            rotatePlayerTime = 0.1f;
+        }
+
+        Player.Instance.cameraController.RotateCameraOverTime(0, 180, rotatePlayerTime, false);
+        yield return new WaitForSeconds(rotatePlayerTime);
+
         Vector3 startPosition = transform.position;
+        Vector3 endPosition = new Vector3(Player.Instance.transform.position.x, Player.Instance.transform.position.y + 0.5f, Player.Instance.transform.position.z);
 
-        //Move to first position
-        StartCoroutine(Move(startPosition, basementPosition1.position, basementMovementDuration / 2));
-        yield return new WaitForSeconds(basementMovementDuration / 2);
+        //fly towards player
+        StartCoroutine(Move(startPosition, endPosition, basementMovementDuration));
 
-        //Move to second position
-        StartCoroutine(Move(transform.position, basementPosition2.position, basementMovementDuration / 2));
-        yield return new WaitForSeconds(basementMovementDuration / 2);
+        //Animation is triggered by overlap event trigger
+        moveCamera.ToggleAnimationCamera(true);
 
-        gameObject.SetActive(false);
+        yield return new WaitForSeconds(basementMovementDuration);
     }
     private IEnumerator Move(Vector3 startPos, Vector3 endPos, float movementDuration)
     {
