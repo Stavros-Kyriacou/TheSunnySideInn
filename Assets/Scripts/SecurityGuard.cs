@@ -8,6 +8,7 @@ public class SecurityGuard : NPC
     [SerializeField] private Transform[] movementLocations;
     [SerializeField] private Transform kitchenDoorCollider;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private Door[] lockers;
     public void StartMovement()
     {
         StartCoroutine(MoveToKitchen());
@@ -36,6 +37,12 @@ public class SecurityGuard : NPC
 
         kitchenDoorCollider.gameObject.SetActive(false);
         gameObject.SetActive(false);
+        GameManager.Instance.Security_Guard_Gone = true;
+
+        for (int i = 0; i < lockers.Length; i++)
+        {
+            lockers[i].UnlockDoor();
+        }
 
         yield return null;
     }
@@ -51,7 +58,7 @@ public class SecurityGuard : NPC
             yield return null;
         }
         gameObject.transform.position = endPosition;
-  
+
         foreach (var door in doors)
         {
             if (Vector3.Distance(door.transform.position, transform.position) < 2f && !door.IsOpen)

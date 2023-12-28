@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public bool Room_207_Key_Acquired { get; set; }
     public bool Screwdriver_Acquired { get; set; }
     public bool Page_3_Acquired { get; set; }
+    public bool Security_Guard_Gone { get; set; }
     private void Awake()
     {
         if (Instance != null && Instance != this)

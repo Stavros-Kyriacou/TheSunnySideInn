@@ -228,7 +228,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-411842
+  m_Name: pb_Mesh-11030
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -15669,7 +15669,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-411770
+  m_Name: pb_Mesh-10958
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -18026,6 +18026,11 @@ MonoBehaviour:
   - {fileID: 817433992}
   kitchenDoorCollider: {fileID: 2137060320}
   moveSpeed: 2.5
+  lockers:
+  - {fileID: 1241188822}
+  - {fileID: 1292124529}
+  - {fileID: 1082344734}
+  - {fileID: 530205867}
 --- !u!1001 &785678726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24476,6 +24481,18 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1082344734 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4242636357825784835, guid: 010cce631dc780642843371d60eacce4,
+    type: 3}
+  m_PrefabInstance: {fileID: 5039547412233744424}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc261d715fd4004caed5c666ec76501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1090499996
 GameObject:
   m_ObjectHideFlags: 0
@@ -27549,6 +27566,18 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 27f78494ec2a10a4c9bdecfcb77c673d, type: 3}
+--- !u!114 &1241188822 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8468417488354485650, guid: 010cce631dc780642843371d60eacce4,
+    type: 3}
+  m_PrefabInstance: {fileID: 5039547412233744424}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc261d715fd4004caed5c666ec76501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1241415988
 GameObject:
   m_ObjectHideFlags: 0
@@ -28205,7 +28234,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-411622
+  m_Name: pb_Mesh-10810
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -29365,6 +29394,18 @@ Transform:
   m_Father: {fileID: 1758407895}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1292124529 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4242636356160887340, guid: 010cce631dc780642843371d60eacce4,
+    type: 3}
+  m_PrefabInstance: {fileID: 5039547412233744424}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc261d715fd4004caed5c666ec76501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1294411860 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7489891483658854604, guid: 27f78494ec2a10a4c9bdecfcb77c673d,
@@ -39774,7 +39815,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669287776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -84, y: -10.25, z: 4.5}
+  m_LocalPosition: {x: 11.5, y: 1.25, z: 23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -40675,7 +40716,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-411696
+  m_Name: pb_Mesh-10884
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -53619,6 +53660,11 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 3163
       objectReference: {fileID: 0}
+    - target: {fileID: 2059342466739315429, guid: 010cce631dc780642843371d60eacce4,
+        type: 3}
+      propertyPath: interactMessage
+      value: Open
+      objectReference: {fileID: 0}
     - target: {fileID: 2379301921142520401, guid: 010cce631dc780642843371d60eacce4,
         type: 3}
       propertyPath: m_Mesh
@@ -53714,6 +53760,36 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1344764081}
+    - target: {fileID: 4242636355915067282, guid: 010cce631dc780642843371d60eacce4,
+        type: 3}
+      propertyPath: startsLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242636355915067282, guid: 010cce631dc780642843371d60eacce4,
+        type: 3}
+      propertyPath: doorLockedMessage
+      value: I can't open this with the security guard around
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242636356160887340, guid: 010cce631dc780642843371d60eacce4,
+        type: 3}
+      propertyPath: startsLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242636356160887340, guid: 010cce631dc780642843371d60eacce4,
+        type: 3}
+      propertyPath: doorLockedMessage
+      value: I can't open this with the security guard around
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242636357825784835, guid: 010cce631dc780642843371d60eacce4,
+        type: 3}
+      propertyPath: startsLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4242636357825784835, guid: 010cce631dc780642843371d60eacce4,
+        type: 3}
+      propertyPath: doorLockedMessage
+      value: I can't open this with the security guard around
+      objectReference: {fileID: 0}
     - target: {fileID: 5039547411825745959, guid: 010cce631dc780642843371d60eacce4,
         type: 3}
       propertyPath: m_Mesh
@@ -53733,6 +53809,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_VersionIndex
       value: 4333
+      objectReference: {fileID: 0}
+    - target: {fileID: 6048688956662687973, guid: 010cce631dc780642843371d60eacce4,
+        type: 3}
+      propertyPath: interactMessage
+      value: Open
+      objectReference: {fileID: 0}
+    - target: {fileID: 6048688956951502171, guid: 010cce631dc780642843371d60eacce4,
+        type: 3}
+      propertyPath: interactMessage
+      value: Open
+      objectReference: {fileID: 0}
+    - target: {fileID: 6048688958505773940, guid: 010cce631dc780642843371d60eacce4,
+        type: 3}
+      propertyPath: interactMessage
+      value: Open
       objectReference: {fileID: 0}
     - target: {fileID: 6179743102434569169, guid: 010cce631dc780642843371d60eacce4,
         type: 3}
@@ -53789,6 +53880,16 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 2134312798}
+    - target: {fileID: 8468417488354485650, guid: 010cce631dc780642843371d60eacce4,
+        type: 3}
+      propertyPath: startsLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468417488354485650, guid: 010cce631dc780642843371d60eacce4,
+        type: 3}
+      propertyPath: doorLockedMessage
+      value: I can't open this with the security guard around
+      objectReference: {fileID: 0}
     - target: {fileID: 8896869943496539370, guid: 010cce631dc780642843371d60eacce4,
         type: 3}
       propertyPath: m_Mesh
