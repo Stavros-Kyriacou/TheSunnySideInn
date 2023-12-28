@@ -12,6 +12,7 @@ public class Ladder : MonoBehaviour, IInteractable
     [SerializeField] private Transform cameraTarget;
     [SerializeField] private Elevator elevator;
     [SerializeField] private Carriage carriage;
+    [SerializeField] private Ladder basementLadder;
     [SerializeField] private string interactMessage;
     [SerializeField] private bool isInteractable;
     private bool climbedLadder = false;
@@ -120,8 +121,9 @@ public class Ladder : MonoBehaviour, IInteractable
         if (GameManager.Instance.Page_3_Acquired)
         {
             isInteractable = false;
-            Animator carriageAnimator = carriage.GetComponent<Animator>();
-            carriageAnimator.Play("Close_Hatch");
+            basementLadder.isInteractable = false;
+            // Animator carriageAnimator = carriage.GetComponent<Animator>();
+            // carriageAnimator.Play("Close_Hatch");
             // float animationDelay = carriageAnimator.GetCurrentAnimatorStateInfo(0).length;
             // yield return new WaitForSeconds(animationDelay);
             elevator.TeleportPlayerToBasement();

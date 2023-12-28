@@ -277,6 +277,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Open_Hatch
+          m_BoolArgument: 1
+        m_CallState: 2
   interactMessage: Pickup
   isInteractable: 1
 --- !u!1 &37202961911236596
@@ -660,7 +672,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2518
+  m_VersionIndex: 2533
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -953,7 +965,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3543
+  m_VersionIndex: 3546
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1527,7 +1539,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3543
+  m_VersionIndex: 3558
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2596,7 +2608,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2210
+  m_VersionIndex: 2219
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3123,7 +3135,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2600
+  m_VersionIndex: 2615
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4693,7 +4705,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1529
+  m_VersionIndex: 1547
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5246,10 +5258,10 @@ MonoBehaviour:
   elevatorMoving: 0
   carriagePos: 1
   ladder: {fileID: 7841179864097938133}
-  elevatorLights: {fileID: 0}
-  elevatorLightsBasement: {fileID: 1893114489422469275}
-  warningLight: {fileID: 0}
-  warningLightBasement: {fileID: 2068344970132575870}
+  elevatorLights: {fileID: 1893114489422469275}
+  elevatorLightsBasement: {fileID: 0}
+  warningLight: {fileID: 2068344970132575870}
+  warningLightBasement: {fileID: 0}
   carriageButton: {fileID: 2123515540219891401}
   basementCarriage: {fileID: 0}
 --- !u!1 &4487828544733205653
@@ -5510,26 +5522,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d5325769bff3e4097161429485db49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonType: 2
+  buttonType: 3
   elevator: {fileID: 7333882485702418150}
   basementElevator: {fileID: 0}
-  interactMessage: 
+  interactMessage: press
   isInteractable: 1
   OnInteract:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2123515540219891401}
-        m_TargetAssemblyTypeName: ElevatorButton, Assembly-CSharp
-        m_MethodName: set_IsInteractable
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &4654640541907319093
 GameObject:
   m_ObjectHideFlags: 0
@@ -5970,7 +5970,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3678
+  m_VersionIndex: 3687
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -6410,7 +6410,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2456
+  m_VersionIndex: 2459
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -6935,7 +6935,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3597
+  m_VersionIndex: 3612
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -7612,7 +7612,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3282
+  m_VersionIndex: 3294
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -7972,7 +7972,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2612
+  m_VersionIndex: 2624
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -9192,7 +9192,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2789
+  m_VersionIndex: 2801
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

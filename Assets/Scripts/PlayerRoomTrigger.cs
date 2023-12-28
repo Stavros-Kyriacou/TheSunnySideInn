@@ -8,6 +8,8 @@ public class PlayerRoomTrigger : EventTrigger
     [SerializeField] private Transform destination;
     [SerializeField] private Transform wakeUpDestination;
     [SerializeField] private MoveCamera moveCamera;
+    [SerializeField] private Ladder ladder;
+    [SerializeField] private Ladder basementLadder;
     private Rigidbody playerRigidBody;
     private void Start()
     {
@@ -54,6 +56,10 @@ public class PlayerRoomTrigger : EventTrigger
 
         playerRigidBody.isKinematic = false;
         Player.Instance.InteractionEnabled = true;
+
+        //Reset elevator
+        ladder.IsInteractable = false;
+        basementLadder.IsInteractable = false;
 
         yield return null;
     }
