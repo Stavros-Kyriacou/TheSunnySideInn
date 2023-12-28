@@ -68,37 +68,48 @@ public class NPCMovement : MonoBehaviour
     }
     private IEnumerator BasementMovement()
     {
-        // if (Player.Instance.cameraController.X_Rotation) {
+        
 
-        // }
+        float yRot = Player.Instance.cameraController.Y_Rotation;
+        float xRot = Player.Instance.cameraController.X_Rotation;
+        float convertedYRot = 0;
+        float rotatePlayerTime = 0f;
 
+        if (yRot < 0)
+        {
+            convertedYRot = (yRot % 360) + 360;
+        }
+        else if (yRot > 360)
+        {
+            convertedYRot = yRot % 360;
+        }
 
+        if ((convertedYRot > 205 || convertedYRot < 155) || (xRot < -40 || xRot > 50))
+        {
+            //Not looking forward
+            Debug.Log("not looking forward");
+            rotatePlayerTime = 0.3f;
+        }
+        else
+        {
+            //Looking forward
+            Debug.Log("looking forward");
+            rotatePlayerTime = 0.1f;
+        }
 
-        Debug.Log(1530 % 360);
-        Debug.Log(-90 % 360);
+        Player.Instance.cameraController.RotateCameraOverTime(0, 180, rotatePlayerTime, false);
+        yield return new WaitForSeconds(rotatePlayerTime);
+
         Vector3 startPosition = transform.position;
         Vector3 endPosition = new Vector3(Player.Instance.transform.position.x, Player.Instance.transform.position.y + 0.5f, Player.Instance.transform.position.z);
 
         //fly towards player
         StartCoroutine(Move(startPosition, endPosition, basementMovementDuration));
 
-        //Disable camera movement
-        //Swap to animation camera
         //Animation is triggered by overlap event trigger
-        Player.Instance.CameraEnabled = false;
-        Player.Instance.cameraController.RotateCamera(Player.Instance.cameraController.X_Rotation, 180);
         moveCamera.ToggleAnimationCamera(true);
 
         yield return new WaitForSeconds(basementMovementDuration);
-
-        //TODO 
-        //if player is not facing direction of sam
-        //rotate player
-        
-        //Disable samantha
-        gameObject.SetActive(false);
-
-        yield return null;
     }
     private IEnumerator Move(Vector3 startPos, Vector3 endPos, float movementDuration)
     {

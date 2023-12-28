@@ -51,26 +51,28 @@ public class CameraController : MonoBehaviour
         playerCam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.transform.rotation = Quaternion.Euler(0, yRotation, 0);
     }
-    public void RotateCameraOverTime(Transform target, float duration)
+    public void RotateCameraOverTime(float endXRotation, float endYRotation, float duration, bool enableCameraMovementEnd)
     {
-        Debug.Log("rotate camera over time");
-        Player.Instance.CameraEnabled = false;
-        cameraHolder.transform.LookAt(target);
-        Player.Instance.CameraEnabled = true;
-        // StartCoroutine(RotateCameraOverTimeRoutine(target, duration));
+        StartCoroutine(RotateCameraOverTimeRoutine(endXRotation, endYRotation, duration, enableCameraMovementEnd));
     }
-    public IEnumerator RotateCameraOverTimeRoutine(Transform target, float duration)
+    private IEnumerator RotateCameraOverTimeRoutine(float endXRotation, float endYRotation, float duration, bool enableCameraMovementEnd)
     {
         Player.Instance.CameraEnabled = false;
         float elapsedTime = 0f;
+        float startXRot = X_Rotation;
+        float startYRot = Y_Rotation;
+        float currentXRot = 0;
+        float currentYRot = 0;
 
         while (elapsedTime < duration)
         {
-            cameraHolder.transform.LookAt(target);
+            currentXRot = Mathf.Lerp(startXRot, endXRotation, elapsedTime / duration);
+            currentYRot = Mathf.Lerp(startYRot, endYRotation, elapsedTime / duration);
+            RotateCamera(currentXRot, currentYRot);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
-        Player.Instance.CameraEnabled = true;
+        RotateCamera(endXRotation, endYRotation);
+        Player.Instance.CameraEnabled = enableCameraMovementEnd;
     }
 }

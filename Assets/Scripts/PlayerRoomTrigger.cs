@@ -18,12 +18,12 @@ public class PlayerRoomTrigger : EventTrigger
         //Disable event trigger
         this.EnterTriggerActive = false;
 
+        //Disable player controls
+        Player.Instance.EnableMovement(false);
+        Player.Instance.CameraEnabled = false;
+
         //Play samantha jump to player animation
         samanthaMovementController.PlayBasementMovementSequence();
-
-
-        //Slow player movement
-        // Player.Instance.SlowMovement(4f);
 
         //Fade camera to black
         UIManager.Instance.FadeToBlack(true);
