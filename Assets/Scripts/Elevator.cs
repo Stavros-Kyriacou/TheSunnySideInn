@@ -199,17 +199,12 @@ public class Elevator : BaseElevator
     }
     public void TeleportPlayerToBasement()
     {
-        Debug.Log("teleporting to basement");
-        //Rotate player to face correct position because im dumb and made the basement face a different direction :)
-        // Player.Instance.cameraController.RotateCamera(Player.Instance.cameraController.X_Rotation, Player.Instance.cameraController.Y_Rotation + 90);
-
         //Set the players parent to the basement elevator and se the same local position they were originally in
         Vector3 playerLocalPosition = Player.Instance.transform.localPosition;
         Player.Instance.transform.SetParent(basementCarriage.transform);
         Player.Instance.transform.localPosition = playerLocalPosition;
 
         //Reset normal elevator
-        // elevatorLights.SetActive(true);
         carriageButton.IsInteractable = true;
         warningLightAnimator.SetTrigger("StopWarning");
     }

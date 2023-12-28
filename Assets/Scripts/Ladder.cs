@@ -122,10 +122,6 @@ public class Ladder : MonoBehaviour, IInteractable
         {
             isInteractable = false;
             basementLadder.isInteractable = false;
-            // Animator carriageAnimator = carriage.GetComponent<Animator>();
-            // carriageAnimator.Play("Close_Hatch");
-            // float animationDelay = carriageAnimator.GetCurrentAnimatorStateInfo(0).length;
-            // yield return new WaitForSeconds(animationDelay);
             elevator.TeleportPlayerToBasement();
         }
     }

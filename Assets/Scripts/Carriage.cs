@@ -20,7 +20,6 @@ public class Carriage : MonoBehaviour
     }
     public void HatchOpenAnimComplete()
     {
-        Debug.Log(transform.parent.name + ": open anim complete");
         ladder.IsInteractable = true;
     }
 }

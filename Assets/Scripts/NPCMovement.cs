@@ -68,8 +68,6 @@ public class NPCMovement : MonoBehaviour
     }
     private IEnumerator BasementMovement()
     {
-        
-
         float yRot = Player.Instance.cameraController.Y_Rotation;
         float xRot = Player.Instance.cameraController.X_Rotation;
         float convertedYRot = 0;
@@ -84,22 +82,26 @@ public class NPCMovement : MonoBehaviour
             convertedYRot = yRot % 360;
         }
 
-        if ((convertedYRot > 205 || convertedYRot < 155) || (xRot < -40 || xRot > 50))
+        if ((convertedYRot > 115 || convertedYRot < 65) || (xRot < -40 || xRot > 50))
         {
-            //Not looking forward
-            Debug.Log("not looking forward");
+            //Not looking forward, rotate speed slower
             rotatePlayerTime = 0.3f;
         }
         else
         {
-            //Looking forward
-            Debug.Log("looking forward");
+            //Looking forward, rotate speed faster
             rotatePlayerTime = 0.1f;
         }
 
-        Player.Instance.cameraController.RotateCameraOverTime(0, 180, rotatePlayerTime, false);
+        //Change rotation to converted number so the player doesnt spin around multiple times
+        Player.Instance.cameraController.RotateCamera(xRot, convertedYRot);
+        yield return new WaitForEndOfFrame();
+
+        //Rotate over time
+        Player.Instance.cameraController.RotateCameraOverTime(0, 90, rotatePlayerTime, false);
         yield return new WaitForSeconds(rotatePlayerTime);
 
+        //set end position of jump
         Vector3 startPosition = transform.position;
         Vector3 endPosition = new Vector3(Player.Instance.transform.position.x, Player.Instance.transform.position.y + 0.5f, Player.Instance.transform.position.z);
 
@@ -123,6 +125,4 @@ public class NPCMovement : MonoBehaviour
 
         transform.position = endPos;
     }
-
-
 }
