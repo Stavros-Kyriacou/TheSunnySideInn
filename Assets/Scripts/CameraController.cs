@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float xSensitivity;
     [SerializeField] private float ySensitivity;
     [SerializeField] private MoveCamera cameraHolder;
-    [SerializeField] private Transform playerCam;
+    public Transform playerCam;
     [SerializeField] private Transform orientation;
     private float mouseX;
     private float mouseY;

@@ -5,6 +5,7 @@ using UnityEngine;
 public class NPCMovement : MonoBehaviour
 {
     private Animator animator;
+    private PlaySound playSound;
     [Header("NPC Type")]
     [SerializeField] private NPCType NPCType;
 
@@ -27,10 +28,14 @@ public class NPCMovement : MonoBehaviour
     [SerializeField] private Transform securityScareEndPosition;
     [SerializeField] private float securityScareMovementDuration;
 
+    [Header("Dumpster Sequence")]
+    [SerializeField] private float dumpsterScareDuration;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        
+        playSound = GetComponent<PlaySound>();
+
         switch (NPCType)
         {
             case NPCType.SamathaBasement:
@@ -39,15 +44,13 @@ public class NPCMovement : MonoBehaviour
             case NPCType.SamanthaSecurity:
                 PlaySecurityScareSequence();
                 break;
+            case NPCType.SamanthaDumpster:
+                PlayDumpterScareSequence();
+                break;
             default:
                 Debug.LogError("NPC type not defined");
                 break;
         }
-    }
-    public void PlayBasementStartAnimation()
-    {
-        gameObject.SetActive(true);
-        animator.Play("Hallway_Scare");
     }
     public void PlayBasementMovementSequence()
     {
@@ -62,13 +65,17 @@ public class NPCMovement : MonoBehaviour
         float rotatePlayerTime = 0f;
 
         //Calculate converted yrotation of player, in case they have spun around multiple times
-        if (yRot < 0)
+        if (yRot <= 0)
         {
             convertedYRot = (yRot % 360) + 360;
         }
-        else if (yRot > 360)
+        else if (yRot >= 360)
         {
             convertedYRot = yRot % 360;
+        }
+        else
+        {
+            convertedYRot = yRot;
         }
 
         if ((convertedYRot > 115 || convertedYRot < 65) || (xRot < -40 || xRot > 50))
@@ -116,6 +123,19 @@ public class NPCMovement : MonoBehaviour
 
         yield return null;
     }
+    public void PlayDumpterScareSequence()
+    {
+        StartCoroutine(DumpsterScareRoutine());
+    }
+    private IEnumerator DumpsterScareRoutine()
+    {
+        animator.Play("Hallway_Scare");
+        playSound.Play();
+        yield return new WaitForSeconds(dumpsterScareDuration);
+        gameObject.SetActive(false);
+        Player.Instance.EnableMovement(true);
+        yield return null;
+    }
     private IEnumerator Move(Vector3 startPos, Vector3 endPos, float movementDuration)
     {
         float elapsedTime = 0f;
@@ -132,5 +152,6 @@ public class NPCMovement : MonoBehaviour
 public enum NPCType
 {
     SamathaBasement,
-    SamanthaSecurity
+    SamanthaSecurity,
+    SamanthaDumpster
 }
