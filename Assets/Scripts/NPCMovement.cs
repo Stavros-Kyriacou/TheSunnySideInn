@@ -61,6 +61,7 @@ public class NPCMovement : MonoBehaviour
         float convertedYRot = 0;
         float rotatePlayerTime = 0f;
 
+        //Calculate converted yrotation of player, in case they have spun around multiple times
         if (yRot < 0)
         {
             convertedYRot = (yRot % 360) + 360;
