@@ -5,6 +5,8 @@ using UnityEngine;
 public class NPCMovement : MonoBehaviour
 {
     private Animator animator;
+    [Header("NPC Type")]
+    [SerializeField] private NPCType NPCType;
 
     [Header("Security Room Scene")]
     [SerializeField] private Door securityDoor;
@@ -21,40 +23,26 @@ public class NPCMovement : MonoBehaviour
     [SerializeField] private MoveCamera moveCamera;
     [SerializeField] private Animator cameraAnimator;
 
+    [Header("Security Sequence")]
+    [SerializeField] private Transform securityScareEndPosition;
+    [SerializeField] private float securityScareMovementDuration;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        gameObject.SetActive(false);
-    }
-
-    public void PlaySecurityRoomMovement()
-    {
-        gameObject.SetActive(true);
-
-        StartCoroutine(SecurityRoomSequence());
-    }
-    private IEnumerator SecurityRoomSequence()
-    {
-        transform.position = securityStartPos.position;
-        yield return new WaitForSeconds(startDelay);
-
-        animator.SetTrigger("OnCrawl");
-        StartCoroutine(Move(securityStartPos.position, securityRoomPos.position, securityMovementDuration));
-        yield return new WaitForSeconds(securityMovementDuration + 2f);
-        animator.SetTrigger("OnStop");
-
-        securityDoor.PlayHandleAnimation();
-
-        yield return new WaitForSeconds(2f);
-
-        animator.SetTrigger("OnCrawl");
-        StartCoroutine(Move(securityRoomPos.position, securityEndPos.position, securityMovementDuration));
-        yield return new WaitForSeconds(securityMovementDuration);
-        animator.SetTrigger("OnStop");
-
-        securityDoor.UnlockDoor();
-        gameObject.SetActive(false);
-
+        
+        switch (NPCType)
+        {
+            case NPCType.SamathaBasement:
+                gameObject.SetActive(false);
+                break;
+            case NPCType.SamanthaSecurity:
+                PlaySecurityScareSequence();
+                break;
+            default:
+                Debug.LogError("NPC type not defined");
+                break;
+        }
     }
     public void PlayBasementStartAnimation()
     {
@@ -113,6 +101,20 @@ public class NPCMovement : MonoBehaviour
 
         yield return new WaitForSeconds(basementMovementDuration);
     }
+    public void PlaySecurityScareSequence()
+    {
+        gameObject.SetActive(true);
+        animator.Play("Crawl_Backwards");
+        StartCoroutine(SecurityScareRoutine());
+    }
+    private IEnumerator SecurityScareRoutine()
+    {
+        StartCoroutine(Move(transform.position, securityScareEndPosition.position, securityScareMovementDuration));
+        yield return new WaitForSeconds(securityScareMovementDuration);
+        gameObject.SetActive(false);
+
+        yield return null;
+    }
     private IEnumerator Move(Vector3 startPos, Vector3 endPos, float movementDuration)
     {
         float elapsedTime = 0f;
@@ -125,4 +127,9 @@ public class NPCMovement : MonoBehaviour
 
         transform.position = endPos;
     }
+}
+public enum NPCType
+{
+    SamathaBasement,
+    SamanthaSecurity
 }

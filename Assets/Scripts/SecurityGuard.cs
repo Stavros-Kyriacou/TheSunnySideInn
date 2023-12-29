@@ -15,6 +15,15 @@ public class SecurityGuard : NPC
     }
     private IEnumerator MoveToKitchen()
     {
+        //Unlock lockers
+        //TODO: move to after security guard has left the room. here for faster debugging
+        GameManager.Instance.Security_Guard_Gone = true;
+
+        for (int i = 0; i < lockers.Length; i++)
+        {
+            lockers[i].UnlockDoor();
+        }
+
         float duration = 0f;
 
         for (int i = 0; i < movementLocations.Length - 1; i++)
@@ -37,12 +46,7 @@ public class SecurityGuard : NPC
 
         kitchenDoorCollider.gameObject.SetActive(false);
         gameObject.SetActive(false);
-        GameManager.Instance.Security_Guard_Gone = true;
-
-        for (int i = 0; i < lockers.Length; i++)
-        {
-            lockers[i].UnlockDoor();
-        }
+        
 
         yield return null;
     }
