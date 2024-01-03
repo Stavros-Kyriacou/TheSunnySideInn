@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public UI_Controller UI_Controller;
     public Canvas canvas;
     public Animator canvasAnimator;
+    [SerializeField] private RectTransform fadeToBlack;
 
     [Header("Inventory")]
     [SerializeField] private GameObject inventoryPanel;
@@ -67,6 +68,8 @@ public class UIManager : MonoBehaviour
     }
     public void FadeToBlack(bool fadeToBlack)
     {
+        this.fadeToBlack.gameObject.SetActive(true);
+        
         if (fadeToBlack)
         {
             canvasAnimator.Play("Fade_In_Black");
@@ -76,6 +79,7 @@ public class UIManager : MonoBehaviour
             canvasAnimator.Play("Fade_Out_Black");
         }
     }
+    
     private void ToggleInventory()
     {
         if (Cursor.lockState == CursorLockMode.Locked)
