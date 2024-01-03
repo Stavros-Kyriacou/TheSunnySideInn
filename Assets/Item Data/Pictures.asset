@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Pictures
   Icons:
-  - {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
-  - {fileID: 21300000, guid: fd098fb4cf57bad419701c802e442b7e, type: 3}
-  - {fileID: 21300000, guid: 17035c204825f6340a252046ab6476fd, type: 3}
+  - {fileID: 21300000, guid: 63ac1755c119e544ea87edc33e188868, type: 3}
+  - {fileID: 21300000, guid: bbcacd336cc3a3645b37fbed9a5da6a0, type: 3}
+  - {fileID: 21300000, guid: 5ff1e98d37db70440a6f4a0ac3740d88, type: 3}
