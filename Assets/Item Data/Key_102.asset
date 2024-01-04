@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0db1a543a8b6f5246a3c3ce0d08a5bc1, type: 3}
-  m_Name: Room 213 Key
+  m_Name: Key_102
   m_EditorClassIdentifier: 
-  Name: 213 Key
+  Name: 102 Key
   Icons:
-  - {fileID: 21300000, guid: ae97fb10c6041344f9cc4bbd8af6a20a, type: 3}
-  KeyId: 1
+  - {fileID: 21300000, guid: 72123427322594e41ab84aaeb68fd3e0, type: 3}
+  KeyId: 2
