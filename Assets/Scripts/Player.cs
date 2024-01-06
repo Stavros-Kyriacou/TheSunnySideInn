@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public bool MovementEnabled { get { return movementEnabled; } set { movementEnabled = value; } }
     public bool CameraEnabled { get { return cameraEnabled; } set { cameraEnabled = value; } }
     public bool InteractionEnabled { get { return interactionEnabled; } set { interactionEnabled = value; } }
+    public Rigidbody RigidBody { get { return playerRigidbody;} private set { } }
     private bool movementEnabled = true;
     private bool cameraEnabled = true;
     private bool interactionEnabled = true;

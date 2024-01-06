@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977804530}
   m_LocalRotation: {x: 0.70710576, y: -0, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 0, y: 0.429, z: 0}
-  m_LocalScale: {x: 0.052055996, y: 0.3298361, z: 0.037903998}
+  m_LocalPosition: {x: 0, y: 1.221926, z: 0}
+  m_LocalScale: {x: 0.13472334, y: 0.82983464, z: 0.09982776}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1731326670645295002}
@@ -109,8 +109,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338968381}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.366, z: 0.1419}
-  m_LocalScale: {x: 0.052055996, y: 0.14214, z: 0.045391995}
+  m_LocalPosition: {x: 0, y: 1.056, z: 0.35700506}
+  m_LocalScale: {x: 0.13472334, y: 0.3743541, z: 0.11420172}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1731326670645295002}
@@ -192,8 +192,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1560720259}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.366, z: -0.1419}
-  m_LocalScale: {x: 0.052055996, y: 0.14214, z: 0.045391995}
+  m_LocalPosition: {x: 0, y: 1.056, z: -0.35700506}
+  m_LocalScale: {x: 0.13472334, y: 0.3743541, z: 0.11420172}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1731326670645295002}
@@ -275,8 +275,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2106262240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1756, z: 0}
-  m_LocalScale: {x: 0.2041693, y: 0.35121, z: 0.5780574}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 0.42206225, y: 1, z: 1.5780388}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1731326670645295002}
@@ -342,9 +342,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1731326670645295002}
   - component: {fileID: 1731326670645294999}
-  - component: {fileID: 1731326670645294998}
   m_Layer: 0
-  m_Name: Luggage
+  m_Name: Luggage_Big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -358,7 +357,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731326670645294993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: -22.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -382,57 +381,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.22568595, y: 0.47290647, z: 0.59648454}
   m_Center: {x: 0, y: 0.23233193, z: 0}
---- !u!114 &1731326670645294998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731326670645294993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 330b9ac799e1e644cbea19f921c7b128, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: cf82d281f55e5054a88fbb7cad56caf0, type: 2}
-  OnPickup:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: set_Luggage_Picked_Up
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Door, Assembly-CSharp
-        m_MethodName: UnlockDoor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: set_Luggage_Picked_Up
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  interactMessage: 
-  isInteractable: 0

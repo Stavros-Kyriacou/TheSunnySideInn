@@ -18,6 +18,7 @@ public class MoveCamera : MonoBehaviour
     [SerializeField] private Camera animationCamera;
     [SerializeField] private Transform playerCameraPosition;
     [SerializeField] private Transform doorUnlockPosition;
+    [SerializeField] private Transform taxiCameraPosition;
     private void Awake()
     {
         ToggleAnimationCamera(false);
@@ -32,6 +33,9 @@ public class MoveCamera : MonoBehaviour
                 break;
             case CameraState.UNLOCK_DOOR:
                 transform.position = doorUnlockPosition.position;
+                break;
+            case CameraState.TAXI:
+                transform.position = taxiCameraPosition.position;
                 break;
             default:
                 transform.position = playerCameraPosition.position;
@@ -56,5 +60,6 @@ public class MoveCamera : MonoBehaviour
 public enum CameraState
 {
     PLAYER,
-    UNLOCK_DOOR
+    UNLOCK_DOOR,
+    TAXI
 }
