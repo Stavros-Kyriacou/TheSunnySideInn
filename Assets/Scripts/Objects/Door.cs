@@ -22,6 +22,7 @@ namespace Objects
         public UnityEvent OnClosed;
 
         [Header("Animation")]
+        //Set as true/false in animation clip
         [HideInInspector] public bool isMoving;
 
 
