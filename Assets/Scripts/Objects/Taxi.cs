@@ -5,6 +5,7 @@ using Character.CameraControl;
 using Interfaces;
 using Items;
 using Audio;
+using JetBrains.Annotations;
 
 namespace Objects
 {
@@ -15,6 +16,7 @@ namespace Objects
         [SerializeField] private PlaySound phone;
         [SerializeField] private Interactable leaveTaxiTrigger;
         [SerializeField] private Item luggage;
+        [SerializeField] private float cameraRotateTime;
         private Animator animator;
         //TODO - add sound effect of taxi driving off
         void Awake()
@@ -60,6 +62,10 @@ namespace Objects
         public void HideTaxi()
         {
             gameObject.SetActive(false);
+        }
+        public void RotateCameraWhileDriving()
+        {
+            Player.Instance.cameraController.RotateCameraOverTime(Player.Instance.cameraController.X_Rotation, Player.Instance.cameraController.Y_Rotation - 90, cameraRotateTime, true);
         }
     }
 }

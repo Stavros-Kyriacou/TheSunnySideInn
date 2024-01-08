@@ -4463,6 +4463,7 @@ MonoBehaviour:
   phone: {fileID: 1121775103335021129}
   leaveTaxiTrigger: {fileID: 6179032465419171701}
   luggage: {fileID: 5692024982756990555}
+  cameraRotateTime: 1.5
 --- !u!95 &5692024982423501061
 Animator:
   serializedVersion: 4
