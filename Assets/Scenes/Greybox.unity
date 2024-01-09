@@ -46392,6 +46392,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   interactText: {fileID: 749578758}
+  crosshair: {fileID: 304699049}
+  regularCrosshairScale: {x: 1, y: 1, z: 1}
+  largeCrosshairScale: {x: 2.5, y: 2.5, z: 2.5}
 --- !u!114 &1669287782
 MonoBehaviour:
   m_ObjectHideFlags: 0

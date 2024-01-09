@@ -10,6 +10,9 @@ namespace Character.Components
         [SerializeField] private float rayDistance;
         [SerializeField] private LayerMask mask;
         [SerializeField] private TextMeshProUGUI interactText;
+        [SerializeField] private RectTransform crosshair;
+        [SerializeField] private Vector3 regularCrosshairScale;
+        [SerializeField] private Vector3 largeCrosshairScale;
 
         private void Start()
         {
@@ -34,11 +37,13 @@ namespace Character.Components
 
                 if (interactable != null && interactable.IsInteractable)
                 {
+                    crosshair.localScale = largeCrosshairScale;
                     interactText.text = interactable.InteractMessage;
                     interactText.enabled = true;
                 }
                 else
                 {
+                    crosshair.localScale = regularCrosshairScale;
                     interactText.enabled = false;
                     interactable = null;
                 }
@@ -46,6 +51,7 @@ namespace Character.Components
             else
             {
                 // Debug.DrawRay(playerCam.transform.position, playerCam.TransformDirection(Vector3.forward) * rayDistance, Color.red);
+                crosshair.localScale = regularCrosshairScale;
                 interactText.enabled = false;
                 interactable = null;
             }
