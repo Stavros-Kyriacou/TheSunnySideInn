@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6572218487950082625}
   - component: {fileID: 6572218487950082626}
   - component: {fileID: 6572218487950082627}
-  - component: {fileID: 6572218487950082631}
+  - component: {fileID: 1578544264750733152}
   m_Layer: 0
   m_Name: Evidence
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6572218487950082625
 MeshFilter:
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6572218487950082631
+--- !u!114 &1578544264750733152
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,12 +107,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6572218487950082684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 330b9ac799e1e644cbea19f921c7b128, type: 3}
+  m_Script: {fileID: 11500000, guid: bcf55cfc5463b994081e77dbe4b843b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
-  OnPickup:
+  OnInteract:
     m_PersistentCalls:
       m_Calls: []
   interactMessage: 
-  isInteractable: 1
+  isInteractable: 0

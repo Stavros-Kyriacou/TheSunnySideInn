@@ -10,8 +10,13 @@ namespace Managers
     public class InventoryManager : MonoBehaviour
     {
         public static InventoryManager Instance;
+        private static int maxStaffRoomEvidence = 4;
         public List<ItemData> Items = new List<ItemData>(9);
         [SerializeField] private List<InventorySlot> InventorySlots;
+
+        [Header("Staff Room Evidence")]
+        [SerializeField] private List<ItemData> staffRoomEvidenceList = new List<ItemData>(maxStaffRoomEvidence);
+        private int staffRoomEvidenceIndex = 0;
 
         private void Awake()
         {
@@ -40,6 +45,12 @@ namespace Managers
 
             DrawInventory();
         }
+        public void AddItem(ItemData itemData)
+        {
+            Items.Add(itemData);
+
+            DrawInventory();
+        }
         public void RemoveItem(Item item)
         {
             var itemToRemove = Items.SingleOrDefault(r => r.Name == item.itemData.Name);
@@ -48,6 +59,15 @@ namespace Managers
 
             Items.Remove(itemToRemove);
             DrawInventory();
+        }
+        public void AddStaffRoomEvidence()
+        {
+            AddItem(staffRoomEvidenceList[staffRoomEvidenceIndex]);
+
+            if (staffRoomEvidenceIndex < 3)
+            {
+                staffRoomEvidenceIndex++;
+            }
         }
         public void DrawInventory()
         {
