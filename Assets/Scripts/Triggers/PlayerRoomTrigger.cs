@@ -11,9 +11,9 @@ namespace Triggers
     public class PlayerRoomTrigger : EventTrigger
     {
         [SerializeField] NPCMovement samanthaMovementController;
-        [SerializeField] private Transform destination;
-        [SerializeField] private Transform wakeUpDestination;
+        [SerializeField] private Transform playerTeleportLocation;
         [SerializeField] private MoveCamera moveCamera;
+        [SerializeField] private Bed bed;
         [SerializeField] private Ladder ladder;
         [SerializeField] private Ladder basementLadder;
         private Rigidbody playerRigidBody;
@@ -51,7 +51,8 @@ namespace Triggers
             playerRigidBody.velocity = Vector3.zero;
             playerRigidBody.isKinematic = true;
             Player.Instance.cameraController.RotateCamera(0, 270);
-            playerRigidBody.transform.position = destination.position;
+            playerRigidBody.transform.position = playerTeleportLocation.position;
+            moveCamera.CameraState = CameraState.BED;
 
             UIManager.Instance.FadeToBlack(false);
 

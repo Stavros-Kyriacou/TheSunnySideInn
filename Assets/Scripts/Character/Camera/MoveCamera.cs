@@ -21,6 +21,8 @@ namespace Character.CameraControl
         [SerializeField] private Transform playerCameraPosition;
         [SerializeField] private Transform doorUnlockPosition;
         [SerializeField] private Transform taxiCameraPosition;
+        [SerializeField] private Transform bedCameraPosition;
+
         private void Awake()
         {
             ToggleAnimationCamera(false);
@@ -38,6 +40,9 @@ namespace Character.CameraControl
                     break;
                 case CameraState.TAXI:
                     transform.position = taxiCameraPosition.position;
+                    break;
+                case CameraState.BED:
+                    transform.position = bedCameraPosition.position;
                     break;
                 default:
                     transform.position = playerCameraPosition.position;
@@ -63,5 +68,6 @@ public enum CameraState
 {
     PLAYER,
     UNLOCK_DOOR,
-    TAXI
+    TAXI,
+    BED
 }

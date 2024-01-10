@@ -36,6 +36,11 @@ namespace Character.NPC
         [Header("Dumpster Sequence")]
         [SerializeField] private float dumpsterScareDuration;
 
+        [Header("Player Room Sequence")]
+        [SerializeField] private float playerRoomMovementDurationUp;
+        [SerializeField] private float playerRoomLingerDuration;
+        [SerializeField] private float playerRoomMovementDurationDown;
+
         private void Awake()
         {
             animator = GetComponent<Animator>();
@@ -51,6 +56,9 @@ namespace Character.NPC
                     break;
                 case NPCType.SamanthaDumpster:
                     PlayDumpterScareSequence();
+                    break;
+                case NPCType.SamanthaPlayerRoom:
+                    PlayPlayerRoomScareSequence();
                     break;
                 default:
                     Debug.LogError("NPC type not defined");
@@ -141,6 +149,28 @@ namespace Character.NPC
             Player.Instance.EnableMovement(true);
             yield return null;
         }
+        public void PlayPlayerRoomScareSequence()
+        {
+            StartCoroutine(PlayerRoomScareRoutine());
+        }
+        private IEnumerator PlayerRoomScareRoutine()
+        {
+            Vector3 starPos = transform.position;
+            Vector3 endPos = new Vector3(transform.position.x, transform.position.y + 0.75f, transform.position.z);
+
+            animator.Play("Hallway_Scare");
+
+            //Move up
+            StartCoroutine(Move(starPos, endPos, playerRoomMovementDurationUp));
+            yield return new WaitForSeconds(playerRoomMovementDurationUp);
+            playSound.Play();
+            yield return new WaitForSeconds(playerRoomLingerDuration);
+
+            //Move down
+            StartCoroutine(Move(endPos, starPos, playerRoomMovementDurationDown));
+            yield return new WaitForSeconds(playerRoomMovementDurationDown);
+            gameObject.SetActive(false);
+        }
         private IEnumerator Move(Vector3 startPos, Vector3 endPos, float movementDuration)
         {
             float elapsedTime = 0f;
@@ -159,5 +189,6 @@ public enum NPCType
 {
     SamathaBasement,
     SamanthaSecurity,
-    SamanthaDumpster
+    SamanthaDumpster,
+    SamanthaPlayerRoom
 }

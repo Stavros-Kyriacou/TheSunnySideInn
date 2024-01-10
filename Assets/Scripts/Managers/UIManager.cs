@@ -22,6 +22,7 @@ namespace Managers
         [SerializeField] private TextMeshProUGUI notifyText;
         [SerializeField] private Color32 startColour = new Color32(255, 255, 255, 255);
         [SerializeField] private Color32 endColour = new Color32(255, 255, 255, 0);
+
         private float elapsedTime = 0f;
         private Coroutine fadingText = null;
 
@@ -100,6 +101,9 @@ namespace Managers
             itemViewPanel.SetActive(false);
             scrollButtons.SetActive(false);
         }
-
+        public void PlaySleepAnimation() 
+        {
+            canvasAnimator.Play("Sleep");
+        }
     }
 }
