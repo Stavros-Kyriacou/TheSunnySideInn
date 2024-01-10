@@ -8,8 +8,6 @@ namespace Character.Components
     public class Player : MonoBehaviour
     {
         public static Player Instance;
-        [SerializeField] PlayerStartLocation startLocation;
-        [SerializeField] List<Transform> startLocations;
         private PlayerMovement playerMovement;
         private Rigidbody playerRigidbody;
         public CameraController cameraController;
@@ -29,46 +27,6 @@ namespace Character.Components
             playerMovement = GetComponent<PlayerMovement>();
             cameraController = GetComponent<CameraController>();
             playerRigidbody = GetComponent<Rigidbody>();
-
-            switch (startLocation)
-            {
-                case PlayerStartLocation.Zero:
-                    playerRigidbody.MovePosition(startLocations[0].position);
-                    break;
-                case PlayerStartLocation.Lobby:
-                    playerRigidbody.MovePosition(startLocations[1].position);
-                    break;
-                case PlayerStartLocation.SecurityRoom:
-                    playerRigidbody.MovePosition(startLocations[2].position);
-                    break;
-                case PlayerStartLocation.StaffRoom:
-                    playerRigidbody.MovePosition(startLocations[3].position);
-                    break;
-                case PlayerStartLocation.Kitchen:
-                    playerRigidbody.MovePosition(startLocations[4].position);
-                    break;
-                case PlayerStartLocation.Dumpsters:
-                    playerRigidbody.MovePosition(startLocations[5].position);
-                    break;
-                case PlayerStartLocation.Taxi:
-                    playerRigidbody.MovePosition(startLocations[6].position);
-                    break;
-                case PlayerStartLocation.Mainenance:
-                    playerRigidbody.MovePosition(startLocations[7].position);
-                    break;
-                case PlayerStartLocation.PlayerRoom:
-                    playerRigidbody.MovePosition(startLocations[8].position);
-                    break;
-                case PlayerStartLocation.BasementStart:
-                    playerRigidbody.MovePosition(startLocations[9].position);
-                    break;
-                case PlayerStartLocation.BasementEnd:
-                    playerRigidbody.MovePosition(startLocations[10].position);
-                    break;
-                default:
-                    playerRigidbody.MovePosition(startLocations[0].position);
-                    break;
-            }
         }
         public void MovePlayer(Vector3 startPosition, Vector3 endPosition, float movementDuration, bool cameraEnabled)
         {
@@ -148,18 +106,4 @@ namespace Character.Components
             Destroy(this);
         }
     }
-}
-public enum PlayerStartLocation
-{
-    Zero,
-    Lobby,
-    SecurityRoom,
-    StaffRoom,
-    Kitchen,
-    Dumpsters,
-    Taxi,
-    Mainenance,
-    PlayerRoom,
-    BasementStart,
-    BasementEnd
 }

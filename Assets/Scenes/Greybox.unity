@@ -40529,6 +40529,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   PlayOpeningSequence: 0
+  startLocation: 8
+  useStartLocation: 1
+  startLocations:
+  - {fileID: 1119776387}
+  - {fileID: 246072802}
+  - {fileID: 957079715}
+  - {fileID: 2005991706}
+  - {fileID: 1045320389}
+  - {fileID: 934282455}
+  - {fileID: 865053555}
+  - {fileID: 1778672199}
+  - {fileID: 1619865428}
+  - {fileID: 1844259528}
+  - {fileID: 1910839027}
 --- !u!1001 &1477516229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47674,7 +47688,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669287776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -83.267, y: -10.25, z: 4.656}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -47780,19 +47794,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac3e4d734d7ea44aa87153e9b422327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startLocation: 10
-  startLocations:
-  - {fileID: 1119776387}
-  - {fileID: 246072802}
-  - {fileID: 957079715}
-  - {fileID: 2005991706}
-  - {fileID: 1045320389}
-  - {fileID: 934282455}
-  - {fileID: 865053555}
-  - {fileID: 1778672199}
-  - {fileID: 1619865428}
-  - {fileID: 1844259528}
-  - {fileID: 1910839027}
   cameraController: {fileID: 0}
   playerCollider: {fileID: 263193859}
 --- !u!1 &1673277582
