@@ -40528,9 +40528,9 @@ MonoBehaviour:
   OnStart:
     m_PersistentCalls:
       m_Calls: []
-  PlayOpeningSequence: 0
+  PlayOpeningSequence: 1
+  usePresetStartLocation: 0
   startLocation: 8
-  useStartLocation: 1
   startLocations:
   - {fileID: 1119776387}
   - {fileID: 246072802}
