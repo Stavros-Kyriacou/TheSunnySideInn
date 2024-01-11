@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Items;
 using UI;
+using UnityEngine.UI;
 
 
 namespace Managers
@@ -11,8 +12,10 @@ namespace Managers
     {
         public static InventoryManager Instance;
         private static int maxStaffRoomEvidence = 4;
-        public List<ItemData> Items = new List<ItemData>(9);
+        public List<ItemData> Items = new List<ItemData>(12);
         [SerializeField] private List<InventorySlot> InventorySlots;
+        [SerializeField] private RectTransform inventoryBackground;
+        [SerializeField] private GridLayoutGroup inventoryLayoutGroup;
 
         [Header("Staff Room Evidence")]
         [SerializeField] private List<ItemData> staffRoomEvidenceList = new List<ItemData>(maxStaffRoomEvidence);
@@ -24,6 +27,7 @@ namespace Managers
         }
         private void Start()
         {
+            ResizeInventoryBackground();
             DrawInventory();
         }
         public bool InventoryContainsKey(string keyId)
@@ -80,6 +84,18 @@ namespace Managers
             {
                 InventorySlots[i].DrawSlot(Items[i]);
             }
+        }
+        private void ResizeInventoryBackground()
+        {
+            float topPadding = inventoryLayoutGroup.padding.top;
+            float bottomPadding = inventoryLayoutGroup.padding.bottom;
+            float leftPadding = inventoryLayoutGroup.padding.left;
+            float rightPadding = inventoryLayoutGroup.padding.right;
+            float xCellSize = inventoryLayoutGroup.cellSize.x;
+            float yCellSize = inventoryLayoutGroup.cellSize.y;
+            float width = (xCellSize * InventorySlots.Count()) + (inventoryLayoutGroup.spacing.x * (InventorySlots.Count() - 1)) + (leftPadding + rightPadding);
+            float height = yCellSize + topPadding + bottomPadding;
+            inventoryBackground.sizeDelta = new Vector2(width, height);
         }
     }
 }
