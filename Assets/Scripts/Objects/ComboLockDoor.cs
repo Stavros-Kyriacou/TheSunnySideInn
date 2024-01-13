@@ -10,6 +10,8 @@ namespace Objects
         [SerializeField] private CombinationLock combinationLock;
         [SerializeField] private float unlockedRotationAmount;
         [SerializeField] private float doorMovementDuration;
+        [SerializeField] private Transform audioLocation;
+        private Animator animator;
         public bool IsInteractable { get; set; }
         public string InteractMessage { get; set; }
         [SerializeField] private string interactMessage;
@@ -17,6 +19,7 @@ namespace Objects
         {
             IsInteractable = true;
             InteractMessage = interactMessage;
+            animator = GetComponent<Animator>();
         }
 
         public void Interact()
@@ -27,7 +30,8 @@ namespace Objects
             }
             else
             {
-                StartCoroutine(UnlockDoor());
+                OpenDoor();
+                // StartCoroutine(UnlockDoor());
             }
         }
 
@@ -44,6 +48,19 @@ namespace Objects
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
+        }
+        public void OpenDoor()
+        {
+            IsInteractable = false;
+            animator.SetTrigger("OnOpen");
+        }
+        public void CloseDoor()
+        {
+            animator.SetTrigger("OnClose");
+        }
+        public void PlayAudioClip(AudioClip clip)
+        {
+            AudioSource.PlayClipAtPoint(clip, audioLocation.position);
         }
     }
 }

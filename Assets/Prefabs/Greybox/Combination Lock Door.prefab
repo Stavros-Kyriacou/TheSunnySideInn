@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 268900042896914969}
   - component: {fileID: 268900042896914967}
   - component: {fileID: 268900042896914968}
+  - component: {fileID: 2387290393276154508}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -428,6 +429,7 @@ MonoBehaviour:
   combinationLock: {fileID: 1310251219259282476}
   unlockedRotationAmount: -90
   doorMovementDuration: 1
+  audioLocation: {fileID: 1719587638236894380}
   interactMessage: 
 --- !u!65 &268900042896914968
 BoxCollider:
@@ -442,6 +444,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2786317, y: 3.0198312, z: 2.0160332}
   m_Center: {x: 0.12022805, y: 1.5015147, z: 0.9942727}
+--- !u!95 &2387290393276154508
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268900042896914970}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9271e77176202754aa07508dea4a493f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &268900042950450715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,6 +1094,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 268900044502662089}
+  - component: {fileID: 6438818128351678687}
   m_Layer: 0
   m_Name: Combination Lock Door
   m_TagString: Untagged
@@ -1095,9 +1118,30 @@ Transform:
   - {fileID: 268900043744220924}
   - {fileID: 1310251219259283410}
   - {fileID: 268900043728003167}
+  - {fileID: 1719587638236894380}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &6438818128351678687
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268900044502662090}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d3f90321f02341e49b9cbf53583ef9d5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1037657289587962550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1195,6 +1239,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2909715003734418064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1719587638236894380}
+  m_Layer: 0
+  m_Name: Audio Location
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1719587638236894380
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2909715003734418064}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.215, y: 1.508, z: 0.936}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 268900044502662089}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &268900044507862454
 PrefabInstance:
   m_ObjectHideFlags: 0

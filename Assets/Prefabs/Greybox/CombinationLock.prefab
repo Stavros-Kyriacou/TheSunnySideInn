@@ -7636,7 +7636,7 @@ Transform:
   - {fileID: 1267096582946783347}
   - {fileID: 1267096580953651663}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1267096582139052443
 BoxCollider:
@@ -7663,7 +7663,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b35d1b17f0bb1468361ffd57e8d0f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combination: 040000000800000003000000
+  interactMessage: 
+  combination: 010000000000000000000000
   rings:
   - {fileID: 1267096582193638276}
   - {fileID: 1267096581305835900}
