@@ -1,7 +1,9 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using Character.Components;
+using System.Collections;
 
 namespace Managers
 {
@@ -13,6 +15,10 @@ namespace Managers
         [SerializeField] private bool usePresetStartLocation;
         [SerializeField] PlayerStartLocation startLocation;
         [SerializeField] List<Transform> startLocations;
+
+        [Header("Menu Loading Screen")]
+        [SerializeField] private GameObject loadingScreen;
+        [SerializeField] private GameObject mainMenu;
         public bool Luggage_Picked_Up { get; set; }
         public bool Speak_To_Receptionist { get; set; }
         public bool Room_Key_Acquired { get; set; }
@@ -41,6 +47,8 @@ namespace Managers
         private void MovePlayerStartLocation()
         {
             if (!usePresetStartLocation || PlayOpeningSequence) return;
+
+            if (startLocations == null) return;
 
             Rigidbody rb = Player.Instance.RigidBody;
 
@@ -83,6 +91,28 @@ namespace Managers
                     rb.MovePosition(startLocations[0].position);
                     break;
             }
+        }
+        private IEnumerator LoadLevelAsync()
+        {
+            SceneManager.LoadSceneAsync(1);
+
+            yield return null;
+        }
+        public void PlayGame()
+        {
+            if (SceneManager.GetActiveScene().buildIndex != 0) return;
+            mainMenu.SetActive(false);
+            loadingScreen.SetActive(true);
+
+            StartCoroutine(LoadLevelAsync());
+        }
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
+        public void OpenSettings()
+        {
+
         }
     }
 }
