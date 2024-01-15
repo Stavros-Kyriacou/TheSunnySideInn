@@ -63,6 +63,7 @@ namespace Triggers
 
             playerRigidBody.isKinematic = false;
             Player.Instance.InteractionEnabled = true;
+            bed.EnableWakeUpTrigger();
 
             //Reset elevator
             ladder.IsInteractable = false;
