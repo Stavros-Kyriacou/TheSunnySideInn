@@ -23,6 +23,9 @@ namespace Managers
         [SerializeField] private Color32 startColour = new Color32(255, 255, 255, 255);
         [SerializeField] private Color32 endColour = new Color32(255, 255, 255, 0);
 
+        [Header("Quests")]
+        [SerializeField] private GameObject questPanel;
+
         private float elapsedTime = 0f;
         private Coroutine fadingText = null;
 
@@ -33,6 +36,7 @@ namespace Managers
             inventoryPanel.SetActive(false);
             itemViewPanel.SetActive(false);
             scrollButtons.SetActive(false);
+            questPanel.SetActive(false);
 
             UI_Controller = new UI_Controller();
             UI_Controller.Map.Inventory.performed += x => ToggleInventory();
@@ -100,6 +104,7 @@ namespace Managers
             inventoryPanel.SetActive(!inventoryPanel.activeInHierarchy);
             itemViewPanel.SetActive(false);
             scrollButtons.SetActive(false);
+            questPanel.SetActive(!questPanel.activeInHierarchy);
         }
         public void PlaySleepAnimation() 
         {

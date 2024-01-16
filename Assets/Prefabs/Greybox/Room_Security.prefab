@@ -347,7 +347,7 @@ Transform:
   - {fileID: 3558006850117388193}
   - {fileID: 8485700077380092360}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &721721379239583721
 GameObject:
@@ -4879,6 +4879,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6848698010761516146, guid: 44ebb36c9609edb4aa610b88d94da30a,
+        type: 3}
+      propertyPath: startsLocked
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
