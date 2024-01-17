@@ -20,6 +20,7 @@ namespace Triggers
         private void OnTriggerEnter(Collider other)
         {
             if (!EnterTriggerActive) return;
+            if (other.tag != "Player") return;
 
             EnterTriggerActive = false;
             StartCoroutine(TriggerEnterDelay(triggerEnterDelay));
@@ -27,6 +28,7 @@ namespace Triggers
         private void OnTriggerExit(Collider other)
         {
             if (!ExitTriggerActive) return;
+            if (other.tag != "Player") return;
 
             ExitTriggerActive = false;
             StartCoroutine(TriggerExitDelay(triggerExitDelay));

@@ -47,7 +47,7 @@ public class SecurityGuard : NPC
             yield return new WaitForSeconds(duration);
         }
 
-        kitchenDoorCollider.gameObject.SetActive(false);
+        // kitchenDoorCollider.gameObject.SetActive(false);
         gameObject.SetActive(false);
         
 

@@ -20,12 +20,7 @@ namespace Objects
         }
         public void Interact()
         {
-            if (!GameManager.Instance.Screwdriver_Acquired)
-            {
-                Debug.Log("requires screwdriver");
-                GameManager.Instance.Screwdriver_Acquired = true;
-                return;
-            }
+            if (!GameManager.Instance.Screwdriver_Acquired) return;
 
             if (animator == null) return;
 

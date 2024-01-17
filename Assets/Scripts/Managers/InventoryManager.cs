@@ -4,6 +4,8 @@ using UnityEngine;
 using Items;
 using UI;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using Events;
 
 
 namespace Managers
@@ -19,8 +21,11 @@ namespace Managers
 
         [Header("Staff Room Evidence")]
         [SerializeField] private List<ItemData> staffRoomEvidenceList = new List<ItemData>(maxStaffRoomEvidence);
+        public UnityEvent OnAllEvidenceFound;
         private int staffRoomEvidenceIndex = 0;
-
+        [Header("Staff Room Quests and Events")]
+        [SerializeField] private List<Quest> staffRoomQuests = new List<Quest>();
+        [SerializeField] private List<GameEvent> staffRoomQuestEvents = new List<GameEvent>();
         private void Awake()
         {
             Instance = this;
@@ -67,6 +72,19 @@ namespace Managers
         public void AddStaffRoomEvidence()
         {
             AddItem(staffRoomEvidenceList[staffRoomEvidenceIndex]);
+
+            //Complete quest if all evidence has been found
+            if (staffRoomEvidenceIndex == 3)
+            {
+                OnAllEvidenceFound.Invoke();
+            }
+
+            //Add individual quests for each note and raise events to enable/disable gameobjects
+            if (staffRoomEvidenceIndex > 0)
+            {
+                QuestManager.Instance.AddQuest(staffRoomQuests[staffRoomEvidenceIndex - 1]);
+                staffRoomQuestEvents[staffRoomEvidenceIndex - 1].Raise();
+            }
 
             if (staffRoomEvidenceIndex < 3)
             {

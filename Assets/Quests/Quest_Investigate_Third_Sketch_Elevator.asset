@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f6b6d617cb508e4a9c2b46e3e43a729, type: 3}
-  m_Name: Quest_Investigate_Samanthas_Room
+  m_Name: Quest_Investigate_Third_Sketch_Elevator
   m_EditorClassIdentifier: 
-  Description: Investigate Samantha's room
+  Id: 0
+  Description: Investigate the loation in the third sketch
