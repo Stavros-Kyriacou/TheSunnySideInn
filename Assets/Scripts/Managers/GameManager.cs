@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using Character.Components;
 using System.Collections;
+using Objects;
 
 namespace Managers
 {
@@ -11,10 +12,9 @@ namespace Managers
     {
         public static GameManager Instance;
         public UnityEvent OnStart;
-        public bool PlayOpeningSequence;
-        [SerializeField] private bool usePresetStartLocation;
-        [SerializeField] PlayerStartLocation startLocation;
-        [SerializeField] List<Transform> startLocations;
+        public PlayerStartLocation startLocation;
+        [SerializeField] private List<Transform> startLocations;
+        [SerializeField] private Taxi taxi;
 
         [Header("Menu Loading Screen")]
         [SerializeField] private GameObject loadingScreen;
@@ -46,49 +46,48 @@ namespace Managers
         }
         private void MovePlayerStartLocation()
         {
-            if (!usePresetStartLocation || PlayOpeningSequence) return;
-
             if (startLocations == null) return;
 
-            Rigidbody rb = Player.Instance.RigidBody;
+            if (SceneManager.GetActiveScene().buildIndex != 1) return;
 
             switch (startLocation)
             {
-                case PlayerStartLocation.Zero:
-                    rb.MovePosition(startLocations[0].position);
+                case PlayerStartLocation.OpeningSequence:
+                    Player.Instance.RigidBody.MovePosition(startLocations[6].position);
+                    taxi.StartDriving();
                     break;
                 case PlayerStartLocation.Lobby:
-                    rb.MovePosition(startLocations[1].position);
+                    Player.Instance.RigidBody.MovePosition(startLocations[1].position);
                     break;
                 case PlayerStartLocation.SecurityRoom:
-                    rb.MovePosition(startLocations[2].position);
+                    Player.Instance.RigidBody.MovePosition(startLocations[2].position);
                     break;
                 case PlayerStartLocation.StaffRoom:
-                    rb.MovePosition(startLocations[3].position);
+                    Player.Instance.RigidBody.MovePosition(startLocations[3].position);
                     break;
                 case PlayerStartLocation.Kitchen:
-                    rb.MovePosition(startLocations[4].position);
+                    Player.Instance.RigidBody.MovePosition(startLocations[4].position);
                     break;
                 case PlayerStartLocation.Dumpsters:
-                    rb.MovePosition(startLocations[5].position);
+                    Player.Instance.RigidBody.MovePosition(startLocations[5].position);
                     break;
                 case PlayerStartLocation.Taxi:
-                    rb.MovePosition(startLocations[6].position);
+                    Player.Instance.RigidBody.MovePosition(startLocations[6].position);
                     break;
                 case PlayerStartLocation.Mainenance:
-                    rb.MovePosition(startLocations[7].position);
+                    Player.Instance.RigidBody.MovePosition(startLocations[7].position);
                     break;
                 case PlayerStartLocation.PlayerRoom:
-                    rb.MovePosition(startLocations[8].position);
+                    Player.Instance.RigidBody.MovePosition(startLocations[8].position);
                     break;
                 case PlayerStartLocation.BasementStart:
-                    rb.MovePosition(startLocations[9].position);
+                    Player.Instance.RigidBody.MovePosition(startLocations[9].position);
                     break;
                 case PlayerStartLocation.BasementEnd:
-                    rb.MovePosition(startLocations[10].position);
+                    Player.Instance.RigidBody.MovePosition(startLocations[10].position);
                     break;
                 default:
-                    rb.MovePosition(startLocations[0].position);
+                    Player.Instance.RigidBody.MovePosition(startLocations[0].position);
                     break;
             }
         }
@@ -118,7 +117,7 @@ namespace Managers
 }
 public enum PlayerStartLocation
 {
-    Zero,
+    OpeningSequence,
     Lobby,
     SecurityRoom,
     StaffRoom,
