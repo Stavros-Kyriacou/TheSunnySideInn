@@ -23,13 +23,6 @@ namespace Objects
         {
             animator = GetComponent<Animator>();
             leaveTaxiTrigger.IsInteractable = false;
-
-        }
-        void Start()
-        {
-            if (GameManager.Instance.PlayOpeningSequence == false) return;
-
-            StartDriving();
         }
         public void StartDriving()
         {
@@ -43,14 +36,9 @@ namespace Objects
         {
             phone.Play();
         }
-        public void PauseDriving()
-        {
-            leaveTaxiTrigger.IsInteractable = true;
-        }
         public void LeaveTaxi()
         {
             //Move player to line up with camera position, make camera follow player, make camera face building, add luggage to inventory
-            Player.Instance.RigidBody.MovePosition(new Vector3(playerSitPosition.position.x, Player.Instance.transform.position.y, Player.Instance.transform.position.z));
             moveCamera.CameraState = CameraState.PLAYER;
             moveCamera.transform.SetParent(null);
             Player.Instance.cameraController.RotateCamera(0, 0);
