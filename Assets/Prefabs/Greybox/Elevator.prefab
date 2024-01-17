@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 330b9ac799e1e644cbea19f921c7b128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: b2ea6e75f5d521345bf201463bdf2a93, type: 2}
+  itemData: {fileID: 11400000, guid: fd2a007986ceb5e47ae97fb10f2d633f, type: 2}
   OnPickup:
     m_PersistentCalls:
       m_Calls:
@@ -8826,6 +8826,7 @@ MonoBehaviour:
   cameraTarget: {fileID: 6659445512053303742}
   elevator: {fileID: 7333882485702418150}
   carriage: {fileID: 8639906875330290959}
+  basementLadder: {fileID: 0}
   interactMessage: Climb
   isInteractable: 0
 --- !u!1 &7831389107319373581

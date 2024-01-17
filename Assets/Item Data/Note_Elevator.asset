@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 851e6e1e12f6ac145a131c6e7f49bb40, type: 3}
-  m_Name: Samantha's Message
+  m_Name: Note_Elevator
   m_EditorClassIdentifier: 
-  Name: Message
-  Icons: []
+  Name: Page
+  Icons:
+  - {fileID: 21300000, guid: 38e0d18b9a215194d8e2aeb5736324ee, type: 3}

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 851e6e1e12f6ac145a131c6e7f49bb40, type: 3}
-  m_Name: Photo_Elevator
+  m_Name: Note_Bathroom
   m_EditorClassIdentifier: 
   Name: Photo
   Icons:
-  - {fileID: 21300000, guid: 5ff1e98d37db70440a6f4a0ac3740d88, type: 3}
+  - {fileID: 21300000, guid: 89af7958f7e0071499cc9d4cbb52edf8, type: 3}

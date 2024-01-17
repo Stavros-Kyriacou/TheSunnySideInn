@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 851e6e1e12f6ac145a131c6e7f49bb40, type: 3}
-  m_Name: Photo_Dumpster
+  m_Name: Note_Dumpster
   m_EditorClassIdentifier: 
-  Name: Photo
+  Name: Page
   Icons:
-  - {fileID: 21300000, guid: bbcacd336cc3a3645b37fbed9a5da6a0, type: 3}
+  - {fileID: 21300000, guid: e5bf46465132efb4a9ae8aebd6748d85, type: 3}
