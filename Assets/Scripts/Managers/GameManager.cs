@@ -109,6 +109,11 @@ namespace Managers
         {
             Application.Quit();
         }
+        public void OpenMainMenu()
+        {
+            if (SceneManager.GetActiveScene().buildIndex == 0) return;
+            SceneManager.LoadScene(0);
+        }
         public void OpenSettings()
         {
 
