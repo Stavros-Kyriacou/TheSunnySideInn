@@ -113,6 +113,8 @@ namespace Managers
         {
             if (SceneManager.GetActiveScene().buildIndex == 0) return;
             SceneManager.LoadScene(0);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
         }
         public void OpenSettings()
         {
