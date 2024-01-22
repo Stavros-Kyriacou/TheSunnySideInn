@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851e6e1e12f6ac145a131c6e7f49bb40, type: 3}
   m_Name: Page_Dumpster
   m_EditorClassIdentifier: 
-  Name: Page
+  Name: Document
   Icons:
-  - {fileID: 21300000, guid: cdb88fdb0cf46b244a667edaff21c7df, type: 3}
+  - {fileID: 21300000, guid: 71b2de913e5aba244bcb280dd12367d2, type: 3}

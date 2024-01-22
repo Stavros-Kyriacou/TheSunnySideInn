@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851e6e1e12f6ac145a131c6e7f49bb40, type: 3}
   m_Name: Page_Elevator
   m_EditorClassIdentifier: 
-  Name: Page
+  Name: Document
   Icons:
-  - {fileID: 21300000, guid: c9ed6d6ea2f9657409bfa068d4846139, type: 3}
+  - {fileID: 21300000, guid: 70b5d18b046cc4c4da4eb66fc43a3b34, type: 3}

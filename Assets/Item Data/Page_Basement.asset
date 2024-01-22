@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851e6e1e12f6ac145a131c6e7f49bb40, type: 3}
   m_Name: Page_Basement
   m_EditorClassIdentifier: 
-  Name: Page
+  Name: Note
   Icons:
-  - {fileID: 21300000, guid: 8a6cca56e2b63344eb4769cd92d93ffb, type: 3}
+  - {fileID: 21300000, guid: 87d431c21f532e149b1fa691557a6390, type: 3}
