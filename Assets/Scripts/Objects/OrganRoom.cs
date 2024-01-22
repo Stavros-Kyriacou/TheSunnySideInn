@@ -5,6 +5,7 @@ using Managers;
 using Triggers;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OrganRoom : MonoBehaviour
 {
@@ -38,6 +39,8 @@ public class OrganRoom : MonoBehaviour
         Player.Instance.SlowMovement(20f);
         yield return new WaitForSeconds(fadeToBlackDelay);
         UIManager.Instance.FadeToBlack(true);
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene(2);
         yield return null;
     }
     public void OpenVents()
