@@ -18,6 +18,7 @@ namespace Managers
         [SerializeField] private List<InventorySlot> InventorySlots;
         [SerializeField] private RectTransform inventoryBackground;
         [SerializeField] private GridLayoutGroup inventoryLayoutGroup;
+        [SerializeField] private ItemData missingPersonsReport;
 
         [Header("Staff Room Evidence")]
         [SerializeField] private List<ItemData> staffRoomEvidenceList = new List<ItemData>(maxStaffRoomEvidence);
@@ -32,6 +33,7 @@ namespace Managers
         }
         private void Start()
         {
+            AddItem(missingPersonsReport);
             ResizeInventoryBackground();
             DrawInventory();
         }

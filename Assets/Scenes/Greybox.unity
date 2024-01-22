@@ -22602,6 +22602,8 @@ MonoBehaviour:
   - {fileID: 84426768}
   inventoryBackground: {fileID: 1838703866}
   inventoryLayoutGroup: {fileID: 1838703867}
+  missingPersonsReport: {fileID: 11400000, guid: 53eb73fc20e89b64e9de87d4e162df85,
+    type: 2}
   staffRoomEvidenceList:
   - {fileID: 11400000, guid: 2a179c982dbf3934cb05f7ae53019969, type: 2}
   - {fileID: 11400000, guid: 0760f84da208bed43a4e6acfdfe377c2, type: 2}
